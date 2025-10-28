@@ -1,3 +1,18 @@
+# 🌙 Mufadz — Muslim Lifestyle App
+
+**Mufadz App** adalah proyek latihan jangka panjang berbasis **Next.js + TypeScript + Tailwind + Prisma (MySQL)**.  
+Tujuan: melatih skill sekaligus membangun web app Islami yang berguna dengan fitur jadwal sholat, arah kiblat, kalender, baca Al-Qur'an, dan (nanti) fitur user, chat realtime, reminder, dsb — sambil belajar step-by-step teknologi fullstack modern.
+
+> ⚠️ *Fase 1 (Guest Mode)* — versi awal ini tanpa login: menampilkan jadwal sholat, kiblat, dan kalender. Fitur login user,chat, dan lainnya akan ditambahkan di fase berikutnya sesuai dgn skill2 yang saya telah pelajari.
+
+
+
+
+---
+
+
+
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
