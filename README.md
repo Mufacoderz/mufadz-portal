@@ -1,4 +1,4 @@
-# 🌙 Mufadz — Muslim Lifestyle App
+# 🌙 Mufadz — Muslim Life App
 
 **Mufadz App** adalah proyek latihan jangka panjang berbasis **TypeScript**, **Tailwind CSS**, dan **PERN Stack**.  
 Tujuan utama proyek ini adalah untuk melatih skill web development modern sekaligus membangun **web app Islami** yang bermanfaat.
