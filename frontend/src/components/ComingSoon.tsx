@@ -15,7 +15,7 @@ const ComingSoon: React.FC<ComingSoonProps> = ({ title, message }) => {
         >
             <div className="bg-white/60 backdrop-blur-md shadow-sm border border-blue-100 rounded-2xl px-8 py-6">
                 <p className="text-gray-700 font-medium">
-                    {message || `${title} akan hadir di versi berikutnya.`}
+                    {message || `${title} akan hadir di versi berikutnya kakack.`}
                 </p>
             </div>
         </motion.div>

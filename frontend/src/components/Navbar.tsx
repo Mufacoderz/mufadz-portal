@@ -9,7 +9,7 @@ const Navbar = () => {
     const [menuOpen, setMenuOpen] = useState(false);
 
     const navItems = [
-        { name: "Chat Global", path: "/chat", icon: <MessageCircle size={18} /> },
+        { name: "Forum Chat", path: "/chat", icon: <MessageCircle size={18} /> },
         { name: "Home", path: "/", icon: <Home size={18} /> },
         { name: "Baca Quran", path: "/quran", icon: <BookOpen size={18} /> },
         { name: "Profile", path: "/profile", icon: <User size={18} /> },

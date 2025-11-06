@@ -1,7 +1,7 @@
 import ComingSoon from "../components/ComingSoon";
 
-const ChatGlobal = () => {
-    return <ComingSoon title="Chat Global" />;
+const ForumChat = () => {
+    return <ComingSoon title="Forum Chat" />;
 };
 
-export default ChatGlobal;
+export default ForumChat;

@@ -20,7 +20,7 @@ const JadwalSholat: React.FC = () => {
     }, [coords]);
 
     if (error) return <p className="text-red-500 text-center">{error}</p>
-    if (!times) return <p className="text-gray-500 text-center">Tunggu ya kakakk...</p>
+    if (!times) return <p className="text-gray-500 text-center">Izinin ambil lokasi ya kakakk...</p>
 
     const prayers: Prayer[] = [
         { name: "Subuh", time: times.Fajr, icon: <Sunrise size={20} /> },
@@ -31,14 +31,14 @@ const JadwalSholat: React.FC = () => {
     ];
 
     return (
-        <div className="p-6 bg-gradient-to-b from-blue-50 to-white rounded-2xl shadow-sm border border-blue-100 w-full max-w-md mx-auto hover:shadow-md">
+        <div className="p-6 bg-gradient-to-b from-blue-50 to-white rounded-2xl shadow-sm border border-blue-100 w-full mx-auto hover:shadow-md">
             <div className="flex justify-between items-center mb-4">
                 <h2 className="text-lg font-semibold text-gray-800">
                     Jadwal Sholat Hari Ini
                 </h2>
             </div>
 
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {prayers.map((p) => (
                     <div
                         key={p.name}
