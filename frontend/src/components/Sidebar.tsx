@@ -1,26 +1,27 @@
-import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
-import { MessageCircle, Home, BookOpen, User, LogOut, Menu, X, Heart, UserCircle } from "lucide-react";
-import logo from "../assets/logohero.webp";
+import { useState } from "react"
+import { Link, useLocation } from "react-router-dom"
+import { MessageCircle, Home, BookOpen, User, LogOut, Menu, X, Heart, UserCircle } from "lucide-react"
+import logo from "../assets/logohero.webp"
 
 const Sidebar = () => {
-    const [open, setOpen] = useState(false);
-    const location = useLocation();
-    const activePath = location.pathname;
+    const [open, setOpen] = useState(false)
+    const location = useLocation()
+    const activePath = location.pathname
 
     const navItems = [
         { name: "Home", path: "/", icon: <Home size={20} /> },
         { name: "Forum Chat", path: "/chat", icon: <MessageCircle size={20} /> },
         { name: "Baca Quran", path: "/quran", icon: <BookOpen size={20} /> },
-        { name: "Daftar Do'a", path: "/pray", icon: <Heart size={20} /> },
+        { name: "Daftar Do'a", path: "/doa", icon: <Heart size={20} /> },
         { name: "Profile", path: "/profile", icon: <User size={20} /> },
-    ];
+    ]
 
     return (
         <>
             <button
                 onClick={() => setOpen(!open)}
-                className="md:hidden fixed top-4 left-4 z-50 bg-white p-2 rounded-lg shadow-md border hover:bg-blue-50"
+                className={`md:hidden fixed top-4 z-50 bg-white p-2 rounded-lg shadow-md border hover:bg-blue-50 transition-all duration-300 
+                    ${open ? "left-[275px]" : "left-4"}`}
             >
                 {open ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -40,23 +41,23 @@ const Sidebar = () => {
 
                 <ul className="mt-6 space-y-1 px-3">
                     {navItems.map((item) => {
-                        const isActive = activePath === item.path;
+                        const isActive = activePath === item.path
                         return (
                             <li key={item.name}>
                                 <Link
                                     to={item.path}
                                     onClick={() => setOpen(false)}
-                                    className={`flex items-center gap-3 px-4 py-2 rounded-lg font-medium transition-all duration-200 hover:translate-x-1
+                                    className={`flex items-center gap-3 px-4 py-2 rounded-lg font-medium transition-all duration-200 hover:translate-x-1 
                                         ${isActive
-                                            ? "bg-blue-50 text-blue-600 shadow-sm"
-                                            : "text-gray-600 hover:bg-blue-50 "
+                                            ? "bg-blue-50 text-blue-600 shadow-sm border-l-4 border-blue-500"
+                                            : "text-gray-600 hover:bg-blue-50"
                                         }`}
                                 >
                                     {item.icon}
                                     <span>{item.name}</span>
                                 </Link>
                             </li>
-                        );
+                        )
                     })}
                 </ul>
 
@@ -76,10 +77,10 @@ const Sidebar = () => {
                         <UserCircle size={20} />
                         <span>By Muhammad Fadil</span>
                     </a>
-
                 </div>
             </aside>
 
+            {/* Overlay */}
             {open && (
                 <div
                     onClick={() => setOpen(false)}
@@ -87,7 +88,7 @@ const Sidebar = () => {
                 ></div>
             )}
         </>
-    );
-};
+    )
+}
 
-export default Sidebar;
+export default Sidebar

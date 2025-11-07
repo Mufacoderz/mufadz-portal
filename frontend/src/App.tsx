@@ -4,7 +4,7 @@ import ChatGlobal from "./pages/ChatPage"
 import BacaQuran from "./pages/QuranPage"
 import Profile from "./pages/ProfilePage"
 import Homepages from "./pages/HomePage"
-import Pray from "./pages/PrayPage"
+import DoaList from "./pages/DoaPage"
 
 function App() {
   return (
@@ -19,7 +19,7 @@ function App() {
             <Route path="/" element={<Homepages />} />
             <Route path="/chat" element={<ChatGlobal />} />
             <Route path="/quran" element={<BacaQuran />} />
-            <Route path="/pray" element={<Pray />} />
+            <Route path="/doa" element={<DoaList />} />
             <Route path="/profile" element={<Profile />} />
           </Routes>
         </main>
