@@ -17,7 +17,7 @@ const JadwalSholat: React.FC = () => {
         if (coords) {
             getPrayerTimes(coords.lat, coords.lon).then(setTimes)
         }
-    }, [coords]);
+    }, [coords])
 
     if (error) return <p className="text-red-500 text-center">{error}</p>
     if (!times) return <p className="text-gray-500 text-center">Tunggu sebentar ya kakakk...</p>
@@ -28,21 +28,21 @@ const JadwalSholat: React.FC = () => {
         { name: "Ashar", time: times.Asr, icon: <Sun size={20} /> },
         { name: "Maghrib", time: times.Maghrib, icon: <Sunset size={20} /> },
         { name: "Isya", time: times.Isha, icon: <Moon size={20} /> },
-    ];
+    ]
 
     return (
-        <div className="p-6 bg-gradient-to-b from-blue-50 to-white rounded-2xl shadow-sm border border-blue-100 w-full mx-auto hover:shadow-md">
+        <div className="p-6 bg-gradient-to-b from-blue-50 to-white rounded-2xl shadow-sm border border-blue-100 w-full max-w-full hover:shadow-md box-border">
             <div className="flex justify-between items-center mb-4">
                 <h2 className="text-lg font-semibold text-gray-800">
                     Jadwal Sholat Hari Ini
                 </h2>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-4 w-full max-w-full">
                 {prayers.map((p) => (
                     <div
                         key={p.name}
-                        className="flex justify-between items-center bg-white rounded-xl shadow-sm px-4 py-3 border border-gray-100 hover:shadow-md hover:-translate-y-1 cursor-pointer transition"
+                        className="flex justify-between items-center bg-white rounded-xl shadow-sm px-4 py-3 border border-gray-100 hover:shadow-md hover:-translate-y-1 cursor-pointer transition w-full max-w-full box-border"
                     >
                         <div className="flex items-center gap-3">
                             <div className="p-2 bg-blue-50 rounded-lg text-blue-500">{p.icon}</div>
@@ -56,7 +56,7 @@ const JadwalSholat: React.FC = () => {
                 ))}
             </div>
         </div>
-    );
-};
+    )
+}
 
 export default JadwalSholat

@@ -1,16 +1,15 @@
-import { motion } from "framer-motion";
-import Hero from "./Hero";
-import JadwalSholat from "./JadwalSholat";
-import ModernKalender from "./Kalender";
+import { motion } from "framer-motion"
+import Hero from "./Hero"
+import JadwalSholat from "./JadwalSholat"
+import KalenderModern from "./Kalender"
 
 const Home = () => {
     return (
-        <section className="relative overflow-hidden py-16 min-h-screen">
-            
-            <div className="relative container mx-auto px-6 md:px-12 lg:px-24 flex flex-col gap-16">
+        <section className="relative overflow-x-hidden py-16 min-h-screen box-border">
+            <div className="relative w-full max-w-full mx-auto px-4 sm:px-6 md:px-12 lg:px-24 flex flex-col gap-16 box-border">
 
                 <motion.div
-                    className="flex flex-col justify-center items-center text-center md:text-left mb-12  sm:py-36 py-10"
+                    className="flex flex-col justify-center items-center text-center md:text-left mb-12 sm:py-36 py-10 w-full"
                     initial={{ opacity: 0, y: 40 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8 }}
@@ -19,17 +18,19 @@ const Home = () => {
                 </motion.div>
 
                 <motion.div
-                    className="flex flex-col lg:flex-row gap-8 items-start"
+                    className="flex flex-col lg:flex-row gap-4 lg:gap-8 w-full"
                     initial={{ opacity: 0, y: 40 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.2 }}
                 >
-                    <div className="w-full flex justify-center">
+                    {/* Jadwal Sholat */}
+                    <div className="w-full lg:w-1/2 flex justify-center">
                         <JadwalSholat />
                     </div>
 
-                    <div className="w-full flex justify-center">
-                        <ModernKalender />
+                    {/* Kalender */}
+                    <div className="w-full lg:w-1/2 flex justify-center">
+                        <KalenderModern />
                     </div>
                 </motion.div>
             </div>
@@ -37,4 +38,4 @@ const Home = () => {
     );
 };
 
-export default Home;
+export default Home

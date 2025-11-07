@@ -2,23 +2,12 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-// Nama bulan Hijriah
 const hijriMonthNames = [
-    "Muharram",
-    "Safar",
-    "Rabi'ul Awal",
-    "Rabi'ul Akhir",
-    "Jumada al-Awwal",
-    "Jumada al-Akhirah",
-    "Rajab",
-    "Sya'ban",
-    "Ramadhan",
-    "Syawal",
-    "Dzulqa'dah",
-    "Dzulhijjah"
+    "Muharram", "Safar", "Rabi'ul Awal", "Rabi'ul Akhir",
+    "Jumada al-Awwal", "Jumada al-Akhirah", "Rajab", "Sya'ban",
+    "Ramadhan", "Syawal", "Dzulqa'dah", "Dzulhijjah"
 ];
 
-// Konversi Gregorian → Hijriah (perkiraan sederhana)
 function gregorianToHijri(date: Date) {
     const day = date.getDate();
     const month = date.getMonth() + 1;
@@ -52,16 +41,12 @@ const KalenderModern = () => {
 
     const todayGregorian = new Date();
     const todayDate = todayGregorian.getDate();
-
-    // --- Masehi ---
     const year = todayGregorian.getFullYear();
     const month = todayGregorian.getMonth() + monthOffset;
     const firstDay = new Date(year, month, 1).getDay();
     const daysInMonth = new Date(year, month + 1, 0).getDate();
-    const masehiDates = Array(firstDay).fill(null)
-        .concat([...Array(daysInMonth).keys()].map(i => i + 1));
+    const masehiDates = Array(firstDay).fill(null).concat([...Array(daysInMonth).keys()].map(i => i + 1));
 
-    // --- Hijriah ---
     const hijriToday = gregorianToHijri(todayGregorian);
     const hijriMonthIndex = ((hijriToday.month - 1 + monthOffset) % 12 + 12) % 12;
     const hijriMonthName = hijriMonthNames[hijriMonthIndex];
@@ -71,10 +56,9 @@ const KalenderModern = () => {
     const hijriDates = Array.from({ length: hijriLengthOfMonth }, (_, i) => i + 1);
 
     return (
-        <div className="w-full max-w-md mx-auto bg-gradient-to-b from-blue-50 to-white rounded-3xl p-6 shadow-lg border border-blue-100 flex flex-col gap-6">
-
+        <div className="w-full max-w-full mx-auto bg-gradient-to-b from-blue-50 to-white rounded-3xl p-4 sm:p-6 hover:shadow-md border border-blue-100 flex flex-col gap-4 box-border">
             {/* Toggle */}
-            <div className="relative w-64 h-10 bg-white/70 backdrop-blur-sm rounded-full flex items-center p-1 shadow-inner mx-auto border border-blue-100">
+            <div className="relative w-full max-w-xs h-10 bg-white/70 backdrop-blur-sm rounded-full flex items-center p-1 shadow-inner mx-auto border border-blue-100">
                 <motion.div
                     layout
                     className="absolute top-1 bottom-1 w-1/2 rounded-full bg-blue-500 shadow-md"
@@ -101,13 +85,11 @@ const KalenderModern = () => {
                 >
                     <ChevronLeft className="w-5 h-5" />
                 </button>
-
-                <p className="font-semibold text-base tracking-wide">
+                <p className="font-semibold text-base tracking-wide text-center w-full">
                     {activeCalendar === "masehi"
                         ? new Date(year, month).toLocaleString("default", { month: "long", year: "numeric" })
                         : `${hijriMonthName} ${hijriYear} H`}
                 </p>
-
                 <button
                     className="p-2 rounded-lg hover:bg-blue-100/50 transition"
                     onClick={() => setMonthOffset(prev => prev + 1)}
@@ -124,7 +106,7 @@ const KalenderModern = () => {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
                     transition={{ duration: 0.25 }}
-                    className="grid grid-cols-7 gap-2 text-sm text-center"
+                    className="grid grid-cols-7 gap-1 sm:gap-2 text-sm text-center"
                 >
                     {(activeCalendar === "masehi" ? masehiDays : hijriDays).map(d => (
                         <div key={d} className="text-gray-500 font-semibold py-1">{d}</div>

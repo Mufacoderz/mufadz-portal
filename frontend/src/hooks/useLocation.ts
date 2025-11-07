@@ -7,7 +7,7 @@ export const useLocation = () => {
     useEffect(() => {
         if (!navigator.geolocation) {
             setError("Browser tidak mendukung geolocation.")
-            return;
+            return
         }
 
         navigator.geolocation.getCurrentPosition(
@@ -15,11 +15,17 @@ export const useLocation = () => {
                 setCoords({
                     lat: pos.coords.latitude,
                     lon: pos.coords.longitude,
-                });
+                })
+                setError(null)
             },
-            (err) => setError(err.message)
-        );
-    }, []);
+            (err) => {
+                console.warn("Geolocation denied or error:", err.message)
+                setError(err.message)
+                setCoords(null)
+            
+            }
+        )
+    }, []) 
 
     return { coords, error }
-};
+}
