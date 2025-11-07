@@ -1,10 +1,10 @@
 
-import Hero from '../components/Hero/Hero'
+import MainHero from '../components/Home/Home'
 
 const Homepages = () => {
     return (
         <div>
-            <Hero/>
+            <MainHero/>
         </div>
     )
 }
