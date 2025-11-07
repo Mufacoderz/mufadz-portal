@@ -1,6 +1,6 @@
 const Hero = () => {
     return (
-        <div className="text-center md:text-left space-y-5 h-[50vh]">
+        <div className="space-y-5">
             <h1 className="text-3xl sm:text-5xl md:text-6xl font-extrabold leading-snug text-gray-800">
                 <span className="block text-gray-700">Assalamu’alaikum,</span>
                 <span className="bg-gradient-to-r from-blue-600 to-cyan-400 bg-clip-text text-transparent">

@@ -19,7 +19,7 @@ const JadwalSholat: React.FC = () => {
         }
     }, [coords]);
 
-    if (error) return <p className="text-red-500 text-center">Gagal mengambil lokasi</p>
+    if (error) return <p className="text-red-500 text-center">{error}</p>
     if (!times) return <p className="text-gray-500 text-center">Tunggu sebentar ya kakakk...</p>
 
     const prayers: Prayer[] = [
