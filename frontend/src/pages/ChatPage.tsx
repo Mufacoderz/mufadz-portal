@@ -1,7 +1,13 @@
 import ComingSoon from "../components/ComingSoon";
+import HeadingPage from "../components/Heading";
 
 const ForumChat = () => {
-    return <ComingSoon title="Forum Chat" />;
+    return (
+        <div className="mt-10">
+            <HeadingPage title="Forum Chat"/>
+            <ComingSoon title="Forum Chat" />
+        </div>
+    );
 };
 
 export default ForumChat;

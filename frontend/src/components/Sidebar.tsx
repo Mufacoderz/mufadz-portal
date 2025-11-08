@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { Link, useLocation } from "react-router-dom"
-import { MessageCircle, Home, BookOpen, User, LogOut, Menu, X, Heart, UserCircle, HelpCircle } from "lucide-react"
+import { MessageCircle, Home, BookOpen, User, LogOut, ChevronRight, ChevronLeft, Heart, UserCircle, HelpCircle } from "lucide-react"
 import logo from "../assets/logohero.webp"
 
 const Sidebar = () => {
@@ -22,10 +22,10 @@ const Sidebar = () => {
             <button
                 onClick={() => setOpen(!open)}
                 className={`md:hidden fixed top-4 z-50 bg-white p-2 rounded-lg border-none  transition-all duration-300 
-                    ${open ? "left-[233px]" : "-left-1"}
+                    ${open ? "left-[230px]" : "-left-1"}
                     ${open ? 'hover:bg-white' : 'hover:bg-blue-50'}`}
             >
-                {open ? <X size={24} /> : <Menu size={24} />}
+                {open ? <ChevronLeft size={24} /> : <ChevronRight size={24} />}
             </button>
 
             <aside

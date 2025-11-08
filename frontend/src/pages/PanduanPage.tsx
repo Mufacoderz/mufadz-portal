@@ -1,5 +1,6 @@
 import { BookOpen, MessageCircle, Calendar, User, Sun, Feather } from "lucide-react"
 import { useNavigate } from "react-router-dom"
+import HeadingPage from "../components/Heading"
 
 export default function Panduan() {
     const navigate = useNavigate()
@@ -60,9 +61,10 @@ export default function Panduan() {
 
     return (
         <div className="max-w-6xl mx-auto px-5 mt-10">
+            <HeadingPage title="Panduan Mufadz App"/>
+            
             {/* Hero Section */}
             <div className="text-center mb-12">
-                <h1 className="text-4xl font-bold text-blue-700 mb-4">Panduan Mufadz App</h1>
                 <p className="text-gray-700 text-lg max-w-2xl mx-auto">
                     Pelajari cara menggunakan fitur-fitur utama aplikasi Mufadz App agar pengalaman ibadah dan belajar lebih nyaman.
                 </p>

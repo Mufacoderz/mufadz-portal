@@ -1,8 +1,11 @@
-// src/pages/BacaQuran.tsx
+import HeadingPage from "../components/Heading";
+
 export default function BacaQuran() {
     return (
-        <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-b from-blue-50 to-white p-4">
-            <h1 className="text-2xl font-semibold text-blue-700 mb-4">📖 Baca Al-Qur'an</h1>
+        <div className="flex flex-col items-center justify-center min-h-screen mt-10">
+
+            <HeadingPage title="Baca Al-Qur'an"/>
+
             <p className="text-gray-500">halaman Sementara versi embedded </p>
             <div className="w-full max-w-5xl h-[80vh] rounded-xl overflow-hidden shadow-lg border border-blue-100">
                 <iframe

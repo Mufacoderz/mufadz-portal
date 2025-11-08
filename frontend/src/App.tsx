@@ -6,14 +6,15 @@ import Profile from "./pages/ProfilePage"
 import Homepages from "./pages/HomePage"
 import DoaList from "./pages/DoaPage/DoaList"
 import DoaDetail from "./pages/DoaPage/DoaDetail"
-import Panduan from "./pages/Panduan"
+import Panduan from "./pages/PanduanPage"
+import Footer from "./components/Footer"
 
 function App() {
   return (
     <BrowserRouter>
       <div className="flex min-h-screen bg-gray-50">
         <Sidebar />
-        <main className="flex-1 ml-0 md:ml-64 p-6 transition-all duration-300">
+        <main className="flex-1 ml-0 md:ml-64 transition-all duration-300">
           <Routes>
             <Route path="/" element={<Homepages />} />
             <Route path="/chat" element={<ChatGlobal />} />
@@ -23,6 +24,7 @@ function App() {
             <Route path="/profile" element={<Profile />} />
             <Route path="/panduan" element={<Panduan />} />
           </Routes>
+        <Footer/>
         </main>
       </div>
     </BrowserRouter>
