@@ -60,7 +60,6 @@ const JadwalSholat: React.FC = () => {
                             bg-white border-gray-100 text-gray-800
                             hover:shadow-md hover:-translate-y-1 cursor-pointer transition
                             dark:bg-gray-800 dark:border-gray-700 dark:text-gray-200
-                            dark:hover:bg-gray-700
                             w-full max-w-full box-border
                         "
                     >

@@ -5,6 +5,7 @@ import { MessageCircle, Home, BookOpen, User, LogOut, Heart, UserCircle, HelpCir
 
 import HeaderSidebar from "./HeaderSidebar"
 import SidebarToggle from "./SidebarToggle"
+import TanyaFadzAIButton from "./TanyaAIButton"
 
 const Sidebar = () => {
     const [open, setOpen] = useState(false)
@@ -52,9 +53,10 @@ const Sidebar = () => {
                         )
                     })}
                 </ul>
+                <TanyaFadzAIButton/>
 
                 <div className="absolute bottom-5 left-0 w-full px-3">
-                    <button className="flex items-center gap-3 w-full px-4 py-2 rounded-lg text-gray-500 hover:bg-red-50 hover:text-red-600 transition-all duration-200">
+                    <button className="flex items-center gap-3 w-full px-4 py-2 rounded-lg text-gray-500 hover:bg-red-50 dark:hover:bg-red-950 hover:text-red-600 transition-all duration-200">
                         <LogOut size={20} />
                         <span>Keluar</span>
                     </button>
@@ -62,7 +64,7 @@ const Sidebar = () => {
                         href="https://github.com/Mufacoderz"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-3 w-full px-4 py-2 rounded-lg text-gray-500 hover:bg-blue-50 hover:text-blue-600 transition-all duration-200"
+                        className="flex items-center gap-3 w-full px-4 py-2 rounded-lg text-gray-500 hover:bg-blue-50 dark:hover:bg-blue-950 hover:text-blue-600 transition-all duration-200"
                     >
                         <UserCircle size={20} />
                         <span>By Muhammad Fadil</span>

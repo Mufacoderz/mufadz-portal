@@ -8,6 +8,7 @@ import DoaList from "./pages/DoaPage/DoaList"
 import DoaDetail from "./pages/DoaPage/DoaDetail"
 import Panduan from "./pages/PanduanPage"
 import DarkModeToggle from "./components/DarkModeToggle"
+import ChatBot from "./pages/ChatBot"
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
             <Route path="/doa/:id" element={<DoaDetail />} />   
             <Route path="/profile" element={<Profile />} />
             <Route path="/panduan" element={<Panduan />} />
+            <Route path="/chatbot" element={<ChatBot />} />
           </Routes>
         
         </main>
