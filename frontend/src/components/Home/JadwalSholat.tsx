@@ -19,8 +19,14 @@ const JadwalSholat: React.FC = () => {
         }
     }, [coords])
 
-    if (error) return <p className="text-red-500 text-center">{error}</p>
-    if (!times) return <p className="text-blue-500 text-center"><Sparkles className="animate-spin-slow" /> Memuat jadwal sholat...</p>
+    if (error)
+        return <p className="text-red-500 dark:text-red-400 text-center">{error}</p>
+    if (!times)
+        return (
+            <p className="text-blue-500 dark:text-blue-400 text-center flex items-center justify-center gap-2">
+                <Sparkles className="animate-spin-slow" /> Memuat jadwal sholat...
+            </p>
+        )
 
     const prayers: Prayer[] = [
         { name: "Subuh", time: times.Fajr, icon: <Sunrise size={20} /> },
@@ -31,9 +37,16 @@ const JadwalSholat: React.FC = () => {
     ]
 
     return (
-        <div className="p-6 bg-gradient-to-b from-blue-50 to-white rounded-2xl shadow-sm border border-blue-100 w-full max-w-full hover:shadow-md box-border">
+        <div
+            className="
+                p-6 rounded-2xl shadow-sm border w-full max-w-full hover:shadow-md box-border
+                bg-gradient-to-b from-blue-50 to-white border-blue-100
+                dark:bg-gradient-to-b dark:from-gray-900 dark:to-gray-950 dark:border-gray-800
+                transition-all duration-500
+            "
+        >
             <div className="flex justify-between items-center mb-4">
-                <h2 className="text-lg font-semibold text-gray-800">
+                <h2 className="text-lg font-semibold text-gray-800 dark:text-gray-100">
                     Jadwal Sholat Hari Ini
                 </h2>
             </div>
@@ -42,16 +55,37 @@ const JadwalSholat: React.FC = () => {
                 {prayers.map((p) => (
                     <div
                         key={p.name}
-                        className="flex justify-between items-center bg-white rounded-xl shadow-sm px-4 py-3 border border-gray-100 hover:shadow-md hover:-translate-y-1 cursor-pointer transition w-full max-w-full box-border"
+                        className="
+                            flex justify-between items-center rounded-xl px-4 py-3 border shadow-sm
+                            bg-white border-gray-100 text-gray-800
+                            hover:shadow-md hover:-translate-y-1 cursor-pointer transition
+                            dark:bg-gray-800 dark:border-gray-700 dark:text-gray-200
+                            dark:hover:bg-gray-700
+                            w-full max-w-full box-border
+                        "
                     >
                         <div className="flex items-center gap-3">
-                            <div className="p-2 bg-blue-50 rounded-lg text-blue-500">{p.icon}</div>
+                            <div
+                                className="
+                                    p-2 rounded-lg 
+                                    bg-blue-50 text-blue-500 
+                                    dark:bg-gray-700 dark:text-blue-400
+                                "
+                            >
+                                {p.icon}
+                            </div>
                             <div>
-                                <h3 className="text-sm font-medium text-gray-700">{p.name}</h3>
-                                <p className="text-xs text-gray-400">Waktu lokal</p>
+                                <h3 className="text-sm font-medium text-gray-700 dark:text-gray-200">
+                                    {p.name}
+                                </h3>
+                                <p className="text-xs text-gray-400 dark:text-gray-500">
+                                    Waktu lokal
+                                </p>
                             </div>
                         </div>
-                        <span className="text-blue-600 font-semibold">{p.time}</span>
+                        <span className="text-blue-600 dark:text-blue-300 font-semibold">
+                            {p.time}
+                        </span>
                     </div>
                 ))}
             </div>

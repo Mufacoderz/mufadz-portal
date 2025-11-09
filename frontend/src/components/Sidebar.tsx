@@ -23,14 +23,14 @@ const Sidebar = () => {
             <button
                 onClick={() => setOpen(!open)}
                 className={`md:hidden fixed top-4 z-50 dark:text-white bg-white dark:bg-gray-900 p-2 rounded-lg border-none  transition-all duration-300 
-                    ${open ? "left-[230px]" : "left-[-5px]"}
+                    ${open ? "left-[236px]" : "left-[-5px]"}
                     ${open ? 'hover:bg-white' : 'hover:bg-blue-50'}`}
             >
                 {open ? <X size={24} /> : <Menu size={24} />}
             </button>
 
             <aside
-                className={`fixed top-0 left-0 h-full bg-white dark:bg-gray-900  shadow-lg border-r z-40 transform transition-transform duration-300 ease-in-out
+                className={`fixed top-0 left-0 h-full bg-white dark:bg-gray-900  shadow-lg border-r dark:border-gray-600 z-40 transform transition-transform duration-300 ease-in-out
                     ${open ? "translate-x-0" : "-translate-x-full"} md:translate-x-0 w-60 md:w-64`}
             >
 

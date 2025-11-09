@@ -4,7 +4,8 @@ import Footer from '../components/Footer'
 
 const Homepages = () => {
     return (
-        <div>
+        <div >
+            
             <MainHero/>
             <Footer/>
         </div>

@@ -1,12 +1,10 @@
-// Calender By GPT
-
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useState } from "react"
+import { motion, AnimatePresence } from "framer-motion"
+import { ChevronLeft, ChevronRight } from "lucide-react"
 
 const hijriMonthNames = [
     "Muharram", "Safar", "Rabi'ul Awal", "Rabi'ul Akhir",
-    "Jumada al-Awwal", "Jumada al-Akhirah", "Rajab", "Sya'ban",
+    "Jumadil Awal", "Jumadil Akhir", "Rajab", "Sya'ban",
     "Ramadhan", "Syawal", "Dzulqa'dah", "Dzulhijjah"
 ];
 
@@ -58,31 +56,48 @@ const KalenderModern = () => {
     const hijriDates = Array.from({ length: hijriLengthOfMonth }, (_, i) => i + 1);
 
     return (
-        <div className="w-full max-w-full mx-auto bg-gradient-to-b from-blue-50 to-white rounded-3xl p-4 sm:p-6 hover:shadow-md border border-blue-100 flex flex-col gap-4 box-border">
+        <div
+            className="
+                w-full max-w-full mx-auto rounded-3xl p-4 sm:p-6 border flex flex-col gap-4 box-border
+                bg-gradient-to-b from-blue-50 to-white border-blue-100 hover:shadow-md
+                dark:bg-gradient-to-b dark:from-gray-900 dark:to-gray-950 dark:border-gray-800 dark:hover:shadow-lg
+                transition-all duration-500
+            "
+        >
             {/* Toggle */}
-            <div className="relative w-full max-w-xs h-10 bg-white/70 backdrop-blur-sm rounded-full flex items-center p-1 shadow-inner mx-auto border border-blue-100">
+            <div className="
+                relative w-full max-w-xs h-10 rounded-full flex items-center p-1 shadow-inner mx-auto
+                bg-white/70 border border-blue-100 backdrop-blur-sm
+                dark:bg-gray-800/70 dark:border-gray-700
+            ">
                 <motion.div
                     layout
-                    className="absolute top-1 bottom-1 w-1/2 rounded-full bg-blue-500 shadow-md"
+                    className="absolute top-1 bottom-1 w-1/2 rounded-full bg-blue-500 dark:bg-blue-500 shadow-md"
                     animate={{ x: activeCalendar === "masehi" ? 0 : "100%" }}
                     transition={{ type: "spring", stiffness: 400, damping: 30 }}
                 />
                 <div className="relative z-10 flex w-full text-sm font-medium text-center">
                     <button
-                        className={`flex-1 transition ${activeCalendar === "masehi" ? "text-white" : "text-gray-600 hover:text-blue-600"}`}
+                        className={`flex-1 transition ${activeCalendar === "masehi"
+                            ? "text-white dark:text-gray-800"
+                            : "text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
+                            }`}
                         onClick={() => setActiveCalendar("masehi")}
                     >Masehi</button>
                     <button
-                        className={`flex-1 transition ${activeCalendar === "hijriah" ? "text-white" : "text-gray-600 hover:text-blue-600"}`}
+                        className={`flex-1 transition ${activeCalendar === "hijriah"
+                            ? "text-white dark:text-gray-800"
+                            : "text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
+                            }`}
                         onClick={() => setActiveCalendar("hijriah")}
                     >Hijriah</button>
                 </div>
             </div>
 
-            {/* Header navigasi */}
-            <div className="flex items-center justify-between px-2 text-gray-700">
+            {/* Header Navigasi */}
+            <div className="flex items-center justify-between px-2 text-gray-700 dark:text-gray-200">
                 <button
-                    className="p-2 rounded-lg hover:bg-blue-100/50 transition"
+                    className="p-2 rounded-lg hover:bg-blue-100/50 dark:hover:bg-gray-700/50 transition"
                     onClick={() => setMonthOffset(prev => prev - 1)}
                 >
                     <ChevronLeft className="w-5 h-5" />
@@ -93,7 +108,7 @@ const KalenderModern = () => {
                         : `${hijriMonthName} ${hijriYear} H`}
                 </p>
                 <button
-                    className="p-2 rounded-lg hover:bg-blue-100/50 transition"
+                    className="p-2 rounded-lg hover:bg-blue-100/50 dark:hover:bg-gray-700/50 transition"
                     onClick={() => setMonthOffset(prev => prev + 1)}
                 >
                     <ChevronRight className="w-5 h-5" />
@@ -111,7 +126,7 @@ const KalenderModern = () => {
                     className="grid grid-cols-7 gap-1 sm:gap-2 text-sm text-center"
                 >
                     {(activeCalendar === "masehi" ? masehiDays : hijriDays).map(d => (
-                        <div key={d} className="text-gray-500 font-semibold py-1">{d}</div>
+                        <div key={d} className="text-gray-500 dark:text-gray-400 font-semibold py-1">{d}</div>
                     ))}
 
                     {(activeCalendar === "masehi" ? masehiDates : hijriDates).map((dateValue, i) => {
@@ -122,10 +137,13 @@ const KalenderModern = () => {
                         return (
                             <div
                                 key={i}
-                                className={`p-2 rounded-xl transition cursor-pointer border text-gray-700 font-medium ${isToday
-                                    ? "bg-blue-500 text-white shadow-md border-blue-300"
-                                    : "hover:bg-blue-50 border-transparent"
-                                    }`}
+                                className={`
+                                    p-2 rounded-xl border font-medium transition cursor-pointer
+                                    ${isToday
+                                        ? "bg-blue-500 text-white shadow-md border-blue-300 dark:border-blue-800 dark:bg-blue-500 dark:text-gray-900"
+                                        : "text-gray-700 hover:bg-blue-50 border-transparent  dark:text-gray-200 dark:hover:bg-gray-800"
+                                    }
+                                `}
                             >
                                 {dateValue}
                             </div>
@@ -134,7 +152,7 @@ const KalenderModern = () => {
                 </motion.div>
             </AnimatePresence>
         </div>
-    );
-};
+    )
+}
 
-export default KalenderModern;
+export default KalenderModern

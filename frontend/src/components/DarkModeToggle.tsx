@@ -30,9 +30,9 @@ const DarkModeToggle = () => {
             title={darkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
         >
             {darkMode ? (
-                <Sun size={22} className="text-yellow-400 transition-transform duration-300 hover:rotate-12" />
+                <Sun size={22} className="text-yellow-400 transition-transform duration-300 hover:rotate-45" />
             ) : (
-                <Moon size={22} className="text-blue-500 transition-transform duration-300 hover:rotate-12" />
+                <Moon size={22} className="text-blue-500 transition-transform duration-300 hover:rotate-45" />
             )}
         </button>
     )
