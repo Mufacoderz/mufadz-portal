@@ -10,7 +10,7 @@ export default function MorphingShape() {
         bg-gradient-to-tr from-sky-200 via-blue-300 to-indigo-400
         dark:from-sky-900 dark:via-blue-950 dark:to-indigo-950
         opacity-80 rounded-[40%]
-        z-0 shadow-lg
+        z-0 shadow-lg hidden sm:block
         "
             animate={{
                 borderRadius: [

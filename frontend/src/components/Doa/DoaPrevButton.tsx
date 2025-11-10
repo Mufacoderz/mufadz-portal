@@ -6,7 +6,7 @@ const DoaPrevButton = () => {
     return (
         <button
                 onClick={() => navigate("/doa")}
-                className="mb-6 inline-flex items-center gap-2 px-4 py-2 bg-blue-500 text-white font-medium rounded-lg shadow hover:bg-blue-600 transition-all duration-300"
+                className="mb-6 mt-4 inline-flex items-center gap-2 px-4 py-2 bg-blue-500 dark:bg-blue-300 text-white dark:text-gray-800 font-medium rounded-lg shadow hover:bg-blue-700 dark:hover:bg-blue-200 transition-all duration-300"
             >
                 ← Kembali ke Daftar Do'a
             </button>

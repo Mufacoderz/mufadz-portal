@@ -1,44 +1,22 @@
-import { useDoa } from "../../api/doa"
-import { Sparkles } from "lucide-react"
+
 import DoaListCard from "../../components/Doa/DoaListCard"
 import HeadingPage from "../../components/Heading"
 import Footer from "../../components/Footer"
 
 export default function DoaList() {
-    const { doaList, loading, error } = useDoa()
-
-    if (loading)
-        return (
-            <div className="flex justify-center items-center h-64">
-                <p className="text-blue-500 text-lg animate-pulse flex items-center gap-2">
-                    <Sparkles className="animate-spin-slow" /> Memuat do'a...
-                </p>
-            </div>
-        )
-
-    if (error)
-        return (
-            <p className="text-center mt-10 text-red-500 font-medium">
-                Terjadi kesalahan: {error}
-            </p>
-        )
-
-    if (!doaList || doaList.length === 0)
-        return (
-            <p className="text-center mt-10 text-gray-500 italic">
-                Tidak ada do'a tersedia.
-            </p>
-        )
+    
 
     return (
         <>
-            <section className="max-w-5xl mx-auto px-5 my-10">
+            <section className=" px-5 py-10 dark:bg-gray-900 h-full">
 
-                <HeadingPage title="Daftar Doa" />
-                <DoaListCard />
+                <div className="max-w-3xl mx-auto">
+                    <HeadingPage title="Daftar Doa" />
+                    <DoaListCard />
+                </div>
 
             </section>
-            <Footer/>
+            <Footer />
         </>
     )
 }

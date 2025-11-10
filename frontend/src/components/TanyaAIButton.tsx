@@ -1,13 +1,17 @@
 import { Bot } from "lucide-react";
 import { Link } from "react-router-dom";
 
-export default function TanyaFadzAIButton() {
+interface FadzProps {
+    setOpen: React.Dispatch<React.SetStateAction<boolean>>
+}
+
+export default function TanyaFadzAIButton({setOpen}: FadzProps) {
     return (
         <div className="px-6 mt-3">
             <button
                 className="
                 relative overflow-hidden rounded-full 
-                bg-gradient-to-r from-indigo-600 via-blue-500 to-sky-400
+                bg-gradient-to-r from-indigo-600 via-blue-500 to-sky-400 dark:from-sky-400 dark:via-blue-500 dark:to-indigo-600
                 text-white dark:text-gray-800 font-semibold px-5 py-2.5
                 shadow-lg shadow-blue-300/40 dark:shadow-blue-700/40
                 transition-all duration-300 ease-out
@@ -17,7 +21,7 @@ export default function TanyaFadzAIButton() {
                 "
             >
 
-                <Link to={"/chatbot"}>
+                <Link to={"/chatbot"} onClick={()=> setOpen(false)} >
                     <span className="relative z-10 flex items-center gap-2">
                     Tanya Fadz AI
                     <Bot w-5 h-5/>

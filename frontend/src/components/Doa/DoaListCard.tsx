@@ -1,9 +1,34 @@
 import { Link } from "react-router-dom"
 import { useDoa } from "../../api/doa"
+import { Sparkles } from "lucide-react"
 
 
 const DoaListCard = () => {
-    const { doaList} = useDoa()
+
+    const { doaList, loading, error } = useDoa()
+
+    if (loading)
+        return (
+            <div className="flex justify-center items-center h-64">
+                <p className="text-blue-500 dark:text-blue-300 text-lg animate-pulse flex items-center gap-2">
+                    <Sparkles className="animate-spin-slow" /> Memuat do'a...
+                </p>
+            </div>
+        )
+
+    if (error)
+        return (
+            <p className="text-center mt-10 text-red-500 font-medium">
+                Terjadi kesalahan: {error}
+            </p>
+        )
+
+    if (!doaList || doaList.length === 0)
+        return (
+            <p className="text-center mt-10 text-gray-500 italic">
+                Tidak ada do'a tersedia.
+            </p>
+        )
 
     return (
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 ">
@@ -11,16 +36,16 @@ const DoaListCard = () => {
                     <Link key={doa.id} to={`/doa/${doa.id}`}>
                         <div
                         key={doa.id}
-                        className="group bg-white/80 backdrop-blur-sm border border-blue-100 hover:border-blue-400 
+                        className="group bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm border border-blue-100 dark:border-gray-700 hover:border-blue-700 dark:hover:border-blue-100
                         rounded-2xl p-5 shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer
-                        hover:-translate-y-1 flex flex-col items-start"
+                        hover:-translate-y-1 flex flex-col items-start h-18 sm:h-24"
                     >
                         <div className="flex items-center justify-between w-full ">
                             <div className="flex items-start gap-3">
-                                <div className="bg-blue-500 text-white w-10 h-10 flex items-center justify-center rounded-full font-semibold shadow-sm">
+                                <div className="bg-blue-500 dark:bg-blue-300 text-white dark:text-gray-800 w-10 h-10 flex items-center justify-center rounded-full font-semibold shadow-sm">
                                     {doa.id}
                                 </div>
-                                <h3 className="text-base font-semibold text-gray-800 group-hover:text-blue-700 transition-colors flex-1">
+                                <h3 className="text-base font-semibold text-gray-800 dark:text-white group-hover:text-blue-700 dark:group-hover:text-blue-300 transition-colors flex-1">
                                     {doa.judul}
                                 </h3>
                             </div>

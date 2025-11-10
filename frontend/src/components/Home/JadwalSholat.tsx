@@ -23,7 +23,7 @@ const JadwalSholat: React.FC = () => {
         return <p className="text-red-500 dark:text-red-400 text-center">{error}</p>
     if (!times)
         return (
-            <p className="text-blue-500 dark:text-blue-400 text-center flex items-center justify-center gap-2">
+            <p className="text-blue-500 dark:text-blue-300 text-center flex items-center justify-center gap-2">
                 <Sparkles className="animate-spin-slow" /> Memuat jadwal sholat...
             </p>
         )
