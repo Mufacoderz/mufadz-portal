@@ -14,16 +14,7 @@ const Home = () => {
                 transition-colors duration-500
             "
         >
-             {/* efek mengkilap */}
-                <div
-                    className="
-                        absolute top-0 left-[-75%] w-1/2 h-full
-                        bg-gradient-to-r from-transparent via-white/60 to-transparent
-                        dark:hidden
-                        animate-shine pointer-events-none z-20
-                    "
-                />
-                <MorphingShape/>
+                {/* <MorphingShape/> */}
 
             <div className="relative w-full max-w-full mx-auto px-4 sm:px-6 md:px-12 lg:px-24 flex flex-col gap-16 box-border">
             
