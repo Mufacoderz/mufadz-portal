@@ -1,11 +1,14 @@
 // Sidebar.jsx
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Link, useLocation } from "react-router-dom"
 import { MessageCircle, Home, BookOpen, User, LogOut, Heart, UserCircle, HelpCircle } from "lucide-react"
 
 import HeaderSidebar from "./HeaderSidebar"
 import SidebarToggle from "./SidebarToggle"
 import TanyaFadzAIButton from "./TanyaAIButton"
+
+import AOS from 'aos'
+import "aos/dist/aos.css";
 
 const Sidebar = () => {
     const [open, setOpen] = useState(false)
@@ -20,6 +23,14 @@ const Sidebar = () => {
         { name: "Profile", path: "/profile", icon: <User size={20} /> },
         { name: "Panduan", path: "/panduan", icon: <HelpCircle size={20} /> },
     ]
+
+    useEffect(() => {
+        AOS.init({
+            duration: 1000,
+            once: false,
+            offset: 100,
+        });
+    }, []);
 
     return (
         <>
@@ -36,7 +47,10 @@ const Sidebar = () => {
                     {navItems.map((item) => {
                         const isActive = activePath === item.path
                         return (
-                            <li key={item.name}>
+                            <li key={item.name}
+                                data-aos="fade-right"
+                                data-aos-delay={Math.random() * 200}
+                            >
                                 <Link
                                     to={item.path}
                                     onClick={() => setOpen(false)}
@@ -53,7 +67,7 @@ const Sidebar = () => {
                         )
                     })}
                 </ul>
-                <TanyaFadzAIButton setOpen={setOpen}/>
+                <TanyaFadzAIButton setOpen={setOpen} />
 
                 <div className="absolute bottom-5 left-0 w-full px-3">
                     <button className="flex items-center gap-3 w-full px-4 py-2 rounded-lg text-gray-500 hover:bg-red-50 dark:hover:bg-red-950 hover:text-red-600 dark:hover:text-red-300 transition-all duration-200">

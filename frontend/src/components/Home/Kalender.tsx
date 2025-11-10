@@ -1,6 +1,10 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { ChevronLeft, ChevronRight } from "lucide-react"
+import AOS from "aos"
+import "aos/dist/aos.css";
+
+
 
 const hijriMonthNames = [
     "Muharram", "Safar", "Rabi'ul Awal", "Rabi'ul Akhir",
@@ -55,6 +59,14 @@ const KalenderModern = () => {
     const hijriLengthOfMonth = 30;
     const hijriDates = Array.from({ length: hijriLengthOfMonth }, (_, i) => i + 1);
 
+    useEffect(() => {
+    AOS.init({
+        duration: 1000,
+        once: false,
+        offset: 100,
+    });
+}, []);
+
     return (
         <div
             className="
@@ -65,7 +77,9 @@ const KalenderModern = () => {
             "
         >
             {/* Toggle */}
-            <div className="
+            <div
+            data-aos="fade-up"
+            className="
                 relative w-full max-w-xs h-10 rounded-full flex items-center p-1 shadow-inner mx-auto
                 bg-white/70 border border-blue-100 backdrop-blur-sm
                 dark:bg-gray-800/70 dark:border-gray-700
@@ -95,7 +109,9 @@ const KalenderModern = () => {
             </div>
 
             {/* Header Navigasi */}
-            <div className="flex items-center justify-between px-2 text-gray-700 dark:text-gray-200">
+            <div
+            data-aos="fade-up"
+            className="flex items-center justify-between px-2 text-gray-700 dark:text-gray-200">
                 <button
                     className="p-2 rounded-lg hover:bg-blue-100/50 dark:hover:bg-gray-700/50 transition"
                     onClick={() => setMonthOffset(prev => prev - 1)}
@@ -126,7 +142,9 @@ const KalenderModern = () => {
                     className="grid grid-cols-7 gap-1 sm:gap-2 text-sm text-center"
                 >
                     {(activeCalendar === "masehi" ? masehiDays : hijriDays).map(d => (
-                        <div key={d} className="text-gray-500 dark:text-gray-400 font-semibold py-1">{d}</div>
+                        <div key={d}
+                        data-aos="fade-up"
+                        className="text-gray-500 dark:text-gray-400 font-semibold py-1">{d}</div>
                     ))}
 
                     {(activeCalendar === "masehi" ? masehiDates : hijriDates).map((dateValue, i) => {
@@ -137,6 +155,8 @@ const KalenderModern = () => {
                         return (
                             <div
                                 key={i}
+                                data-aos="zoom-in"
+                                data-aos-delay={Math.random() * 200}
                                 className={`
                                     p-2 rounded-xl border font-medium transition cursor-pointer
                                     ${isToday

@@ -1,9 +1,22 @@
 import { Link } from "react-router-dom"
+import { useEffect } from "react"
 import { useDoa } from "../../api/doa"
 import { Sparkles } from "lucide-react"
+import AOS from "aos"
+import "aos/dist/aos.css";
+
+
 
 
 const DoaListCard = () => {
+
+        useEffect(() => {
+        AOS.init({
+            duration: 1000,
+            once: false,
+            offset: 100,
+        });
+    }, []);
 
     const { doaList, loading, error } = useDoa()
 
@@ -36,11 +49,15 @@ const DoaListCard = () => {
                     <Link key={doa.id} to={`/doa/${doa.id}`}>
                         <div
                         key={doa.id}
+                        data-aos="fade-right"
+                        data-aos-delay={Math.random() * 200}
                         className="group bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm border border-blue-100 dark:border-gray-700 hover:border-blue-700 dark:hover:border-blue-100
                         rounded-2xl p-5 shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer
                         hover:-translate-y-1 flex flex-col items-start h-18 sm:h-24"
                     >
-                        <div className="flex items-center justify-between w-full ">
+                        <div 
+                        
+                        className="flex items-center justify-between w-full ">
                             <div className="flex items-start gap-3">
                                 <div className="bg-blue-500 dark:bg-blue-300 text-white dark:text-gray-800 w-10 h-10 flex items-center justify-center rounded-full font-semibold shadow-sm">
                                     {doa.id}

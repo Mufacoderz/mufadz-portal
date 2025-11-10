@@ -2,6 +2,8 @@ import { useEffect, useState } from "react"
 import { Sun, Sunrise, Sunset, Moon, Sparkles } from "lucide-react"
 import { getPrayerTimes } from "../../api/aladhan"
 import { useLocation } from "../../hooks/useLocation"
+import AOS from "aos"
+import "aos/dist/aos.css";
 
 interface Prayer {
     name: string
@@ -18,6 +20,14 @@ const JadwalSholat: React.FC = () => {
             getPrayerTimes(coords.lat, coords.lon).then(setTimes)
         }
     }, [coords])
+
+    useEffect(() => {
+        AOS.init({
+            duration: 1000,
+            once: false,
+            offset: 100,
+        });
+    }, []);
 
     if (error)
         return <p className="text-red-500 dark:text-red-400 text-center">{error}</p>
@@ -55,6 +65,8 @@ const JadwalSholat: React.FC = () => {
                 {prayers.map((p) => (
                     <div
                         key={p.name}
+                        data-aos="fade-up"
+                        data-aos-delay={Math.random() * 200}
                         className="
                             flex justify-between items-center rounded-xl px-4 py-3 border shadow-sm
                             bg-white border-gray-100 text-gray-800

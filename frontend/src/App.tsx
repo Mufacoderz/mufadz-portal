@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
-import Sidebar from "./components/Sidebar"
+import Sidebar from "./components/Sidebar/Sidebar"
 import ChatGlobal from "./pages/ChatPage"
 import BacaQuran from "./pages/QuranPage"
 import Profile from "./pages/ProfilePage"
@@ -9,7 +9,7 @@ import DoaDetail from "./pages/DoaPage/DoaDetail"
 import Panduan from "./pages/PanduanPage"
 import DarkModeToggle from "./components/DarkModeToggle"
 import ChatBot from "./pages/ChatBot"
-import SalamPopup from "./components/SalamPopup"
+// import SalamPopup from "./components/SalamPopup"
 
 function App() {
   return (
@@ -17,7 +17,7 @@ function App() {
       <div className="flex min-h-screen bg-gray-50">
         <Sidebar />
         <DarkModeToggle/>
-        <SalamPopup/>
+        {/* <SalamPopup/> */}
         <main className="flex-1 ml-0 md:ml-64 transition-all duration-300">
           <Routes>
             <Route path="/" element={<Homepages />} />
