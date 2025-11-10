@@ -6,7 +6,7 @@ const Hero = () => {
 
             <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold leading-snug text-gray-800 text-center md:text-left w-full md:w-[70%]">
                 <motion.span
-                    className="relative inline-block bg-clip-text text-transparent bg-gradient-to-r from-blue-500 via-cyan-300 to-blue-500"
+                    className="text-4xl sm:text-5xl lg:text-6xl relative inline-block bg-clip-text text-transparent bg-gradient-to-r from-blue-500 via-cyan-300 to-blue-500"
                     animate={{
                         backgroundPositionX: ["0%", "200%"],
                     }}

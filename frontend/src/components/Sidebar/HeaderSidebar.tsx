@@ -6,27 +6,29 @@ const HeaderSidebar = () => {
         <>
             <div className="flex items-center gap-3 p-3 border-b dark:border-gray-600 justify-center">
                 <img
-                
+
                     src={Logo}
-                    alt="profil"
+                    alt="logo"
                     className="w-11 rounded-full transition-transform duration-300 hover:-translate-y-1 hover:rotate-3 border dark:border-gray-600"
                 />
-                
+
             </div>
 
-            <div className=" border-b dark:border-gray-600  py-2 px-1">
-                <div className='flex items-center gap-3 p-2 transition bg-gray-100 hover:bg-blue-50 dark:bg-gray-800 dark:hover:bg-blue-950  rounded-md'>
+            <div className="border-b dark:border-gray-600 py-2 px-1">
+                <div className="group flex items-center gap-3 p-2 transition bg-gray-100 hover:bg-green-50 dark:bg-gray-800 dark:hover:bg-green-950 rounded-md">
                     <img
-                    src={Profil}
-                    alt="profil"
-                    className="w-8 rounded-full transition-transform duration-300 hover:scale-110"
-                />
-                <div className="greeting flex flex-col  ">
-                    <h2 className='font-semibold text-sm text-gray-600 dark:text-gray-300 cursor-pointer '>Selamat Datang</h2>
-                    <h1 className='font-bold text-gray-700  dark:text-gray-300 cursor-pointer'>Fulan bin Wulan</h1>
-                </div>
+                        src={Profil}
+                        alt="profil"
+                        className="ml-3 w-8 rounded-full transition-transform duration-300 group-hover:scale-110"
+                    />
+                    <div className="greeting flex flex-col">
+                        <h2 className="font-semibold text-sm text-gray-600 dark:text-gray-300 cursor-pointer group-hover:text-green-500 dark:group-hover:text-green-300">
+                            Masuk / Daftar
+                        </h2>
+                    </div>
                 </div>
             </div>
+
         </>
     )
 }

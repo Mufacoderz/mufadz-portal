@@ -27,7 +27,7 @@ export default function DoaDetail() {
 
     if (!doa)
         return (
-            <p className="text-center mt-20 text-blue-500 dark:text-blue-300 animate-pulse">
+            <p className="text-center pt-20 text-blue-500 dark:text-blue-300  dark:bg-gray-900 h-full ">
                 Loading doa...
             </p>
         )
