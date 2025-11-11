@@ -1,5 +1,6 @@
 import Profil from '../../assets/ProfilKosong.webp'
 import Logo from '../../assets/logo.webp'
+import { Link } from 'react-router-dom'
 
 const HeaderSidebar = () => {
     return (
@@ -23,7 +24,9 @@ const HeaderSidebar = () => {
                     />
                     <div className="greeting flex flex-col">
                         <h2 className="font-semibold text-sm text-gray-600 dark:text-gray-300 cursor-pointer group-hover:text-green-500 dark:group-hover:text-green-300">
-                            Masuk / Daftar
+                            <Link to={"/login"} className='hover:text-green-700 dark:hover:text-green-100'>Masuk</Link>
+                            /
+                            <Link to={"/register"} className='hover:text-green-700 dark:hover:text-green-100'>Daftar</Link>
                         </h2>
                     </div>
                 </div>

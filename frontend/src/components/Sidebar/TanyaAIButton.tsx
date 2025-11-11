@@ -25,8 +25,8 @@ export default function TanyaFadzAIButton({setOpen}: FadzProps) {
                     <span className="relative z-10 flex items-center gap-2">
                     Tanya Fadz AI
                     <Bot />
-                </span>
-                <span className="absolute inset-0 rounded-2xl bg-gradient-to-r from-transparent via-white/30 to-transparent translate-x-[-100%] animate-[shine_2.5s_infinite]" />
+                    </span>
+                    <span className="absolute inset-0 rounded-2xl bg-gradient-to-r from-transparent via-white/30 to-transparent translate-x-[-100%] animate-[shine_2.5s_infinite]" />
                 </Link>
 
             </button>

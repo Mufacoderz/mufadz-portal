@@ -42,12 +42,12 @@ const Hero = () => {
                 </motion.button>
 
                 <motion.a
-                    href="/panduan"
+                    href="/register"
                     animate={{ y: [0, -10, 0] }}
                     transition={{ duration: 2, ease: "easeInOut", repeat: Infinity }}
                     className="px-6 py-3 bg-transparent dark:border-blue-300 border-2 border-blue-600 text-blue-600 dark:text-blue-300 dark:hover:text-gray-800 font-semibold rounded-xl hover:bg-blue-600 hover:text-white dark:hover:bg-blue-300 transition-all"
                 >
-                    Pelajari Lebih Lanjut
+                    Gabung Sekarang
                 </motion.a>
             </div>
         </div>
