@@ -2,7 +2,7 @@ import { motion } from "framer-motion"
 import Hero from "./Hero"
 import JadwalSholat from "./JadwalSholat"
 import KalenderModern from "./Kalender"
-import MorphingShape from "../Blob2"
+import MorphingShape from "../BlobBackgorund"
 
 const Home = () => {
     return (
