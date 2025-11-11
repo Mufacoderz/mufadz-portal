@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const Hero = () => {
     return (
@@ -33,22 +34,23 @@ const Hero = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start flex-wrap mx-auto sm:m-0 w-[70%] sm:w-full">
-                <motion.button
+                <motion.div
                     animate={{ y: [0, -10, 0] }}
                     transition={{ duration: 2, ease: "easeInOut", repeat: Infinity }}
                     className="px-6 py-3 bg-blue-600 dark:bg-blue-300 text-white dark:text-gray-800 font-semibold rounded-xl shadow-md hover:bg-blue-700 dark:hover:bg-blue-200 hover:shadow-lg transition-all"
                 >
                     Mulai Sekarang
-                </motion.button>
+                </motion.div>
 
-                <motion.a
-                    href="/register"
+                <motion.div
                     animate={{ y: [0, -10, 0] }}
                     transition={{ duration: 2, ease: "easeInOut", repeat: Infinity }}
                     className="px-6 py-3 bg-transparent dark:border-blue-300 border-2 border-blue-600 text-blue-600 dark:text-blue-300 dark:hover:text-gray-800 font-semibold rounded-xl hover:bg-blue-600 hover:text-white dark:hover:bg-blue-300 transition-all"
                 >
-                    Gabung Sekarang
-                </motion.a>
+                    <Link to={"/register"}>
+                        Gabung Sekarang
+                    </Link>
+                </motion.div>
             </div>
         </div>
     );
