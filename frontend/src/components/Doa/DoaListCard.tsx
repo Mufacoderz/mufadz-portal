@@ -51,7 +51,7 @@ const DoaListCard = () => {
                         key={doa.id}
                         data-aos="fade-right"
                         data-aos-delay={Math.random() * 200}
-                        className="group bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm border border-blue-100 dark:border-gray-700 hover:border-blue-700 dark:hover:border-blue-100
+                        className="group bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-blue-100 dark:border-gray-700 hover:border-blue-700 dark:hover:border-blue-100
                         rounded-2xl p-5 shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer
                         hover:-translate-y-1 flex flex-col items-start h-18 sm:h-24"
                     >

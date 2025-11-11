@@ -160,7 +160,7 @@ const KalenderModern = () => {
                                 className={`
                                     p-2 rounded-xl border font-medium transition cursor-pointer
                                     ${isToday
-                                        ? "bg-blue-500 text-white shadow-md border-blue-300 dark:border-blue-800 dark:bg-blue-300 dark:text-gray-900"
+                                        ? "bg-blue-500 text-white shadow-md border-blue-300 dark:border-gray-800 dark:bg-blue-300 dark:text-gray-900"
                                         : "text-gray-700 hover:bg-blue-50 border-transparent  dark:text-gray-200 dark:hover:bg-gray-800"
                                     }
                                 `}
