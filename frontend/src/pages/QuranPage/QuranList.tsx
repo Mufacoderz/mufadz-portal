@@ -5,7 +5,7 @@ const QuranList = () => {
     return (
         <>
             <div className="dark:bg-gray-900">
-                <div className="py-10 w-[80%] max-w-3xl mx-auto">
+                <div className="py-10 sm:w-[80%] max-w-3xl mx-auto">
                 <HeadingPage title="Baca Al-Quran" />
                 <SurahContainer />
             </div>
