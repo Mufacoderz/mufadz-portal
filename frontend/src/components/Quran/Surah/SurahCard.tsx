@@ -20,7 +20,7 @@ function SurahCard({ surah }: SurahCardProps) {
                         <p className="text-subtle dark:text-gray-300">{surah.tempatTurun} • {surah.jumlahAyat}</p>
                     </div>
                 </div>
-                <p className="font-bold text-xl text-blue-700 dark:text-blue-300">{surah.nama}</p>
+                <p className="font-bold text-2xl text-blue-700 dark:text-blue-300" style={{ fontFamily: "'Amiri', serif" }}>{surah.nama}</p>
             </div>
         </Link>
     );

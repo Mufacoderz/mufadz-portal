@@ -1,4 +1,4 @@
-import PlayIcon from "../../assets/PlayIcon.svg"
+import PlayIcon from "../../assets/PlayIcon.svg";
 import PauseIcon from "../../assets/PauseIcon.svg";
 
 type AudioControlProps = {
@@ -25,29 +25,50 @@ function AudioControl({
   ];
 
   return (
-    <div className="flex justify-between gap-4 items-center">
+    <div className="flex items-center justify-between gap-4 w-full">
+      {/* Dropdown Reciter */}
       <select
         value={currentReciter}
         onChange={(e) => changeReciter(e.target.value)}
-        className="bg-dark text-light p-3 w-full rounded-lg"
+        className="
+          w-full p-3 flex-1 rounded-xl
+          bg-white text-gray-800 shadow-sm
+          border border-gray-200
+          focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400
+          transition-all duration-300
+          dark:bg-gray-800 dark:text-blue-100 dark:border-gray-700
+          dark:focus:ring-blue-500
+        "
       >
         {reciters.map((reciter) => (
-          <option key={reciter.id} value={reciter.id}>
+          <option
+            key={reciter.id}
+            value={reciter.id}
+            className="bg-white dark:bg-gray-800"
+          >
             {reciter.name}
           </option>
         ))}
       </select>
 
-      <div
-        className="bg-primary w-9 h-9 rounded-full flex flex-col justify-center items-center cursor-pointer"
+      {/* Play / Pause Button */}
+      <button
         onClick={audioPlaying ? onPause : onPlay}
+        className={`
+          w-12 h-12 rounded-full flex items-center justify-center
+          transition-all duration-300 ease-in-out
+          shadow-md hover:shadow-lg
+          ${audioPlaying
+            ? "bg-blue-500 hover:bg-blue-600 dark:bg-cyan-400 dark:hover:bg-cyan-500"
+            : "bg-blue-400 hover:bg-blue-500 dark:bg-blue-500 dark:hover:bg-cyan-400"}
+        `}
       >
-        {audioPlaying ? (
-          <img src={PauseIcon} alt="Pause Icon" className="w-fit h-fit" />
-        ) : (
-          <img src={PlayIcon} alt="Play Icon" className="w-fit h-fit" />
-        )}
-      </div>
+        <img
+          src={audioPlaying ? PauseIcon : PlayIcon}
+          alt={audioPlaying ? "Pause Icon" : "Play Icon"}
+          className="w-5 h-5 invert-[0%] dark:invert-[100%]"
+        />
+      </button>
     </div>
   );
 }
