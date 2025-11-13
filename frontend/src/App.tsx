@@ -1,7 +1,8 @@
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Sidebar from "./components/Sidebar/Sidebar";
 import ChatGlobal from "./pages/ChatPage";
-import BacaQuran from "./pages/QuranPage";
+import QuranList from "./pages/QuranPage/QuranList";
+import DetailSurahPage from "./pages/QuranPage/DetailSurah";
 import Profile from "./pages/ProfilePage";
 import Homepages from "./pages/HomePage";
 import DoaList from "./pages/DoaPage/DoaList";
@@ -31,7 +32,8 @@ function AppContent() {
         <Routes>
           <Route path="/" element={<Homepages />} />
           <Route path="/chat" element={<ChatGlobal />} />
-          <Route path="/quran" element={<BacaQuran />} />
+          <Route path="/quran" element={<QuranList />} />
+          <Route path="/surah/:surahId" element={<DetailSurahPage />} />
           <Route path="/doa" element={<DoaList />} />
           <Route path="/doa/:id" element={<DoaDetail />} />
           <Route path="/profile" element={<Profile />} />

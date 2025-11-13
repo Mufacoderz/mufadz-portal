@@ -24,9 +24,9 @@ const HeaderSidebar = () => {
                     />
                     <div className="greeting flex flex-col">
                         <h2 className="font-semibold text-sm text-gray-600 dark:text-gray-300 cursor-pointer ">
-                            <Link to={"/login"} className='hover:text-green-500 dark:hover:text-green-100'>Masuk</Link>
+                            <Link to={"/login"} className='hover:text-green-500 dark:hover:text-green-500'>Masuk</Link>
                             /
-                            <Link to={"/register"} className='hover:text-green-500 dark:hover:text-green-100'>Daftar</Link>
+                            <Link to={"/register"} className='hover:text-green-500 dark:hover:text-green-500'>Daftar</Link>
                         </h2>
                     </div>
                 </div>

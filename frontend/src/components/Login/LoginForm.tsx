@@ -4,7 +4,7 @@ const LoginForm = () => {
         <>
             <div className="max-w-md w-full mx-auto px-4 sm:px-6 lg:px-8">
                 <h2 className="text-2xl sm:text-3xl font-bold text-center mb-6 tracking-wide">
-                    Masuk
+                    Masuk ke Akun
                 </h2>
                 <form className="space-y-4 sm:space-y-5">
 
