@@ -1,3 +1,7 @@
+<div align="center">
+  <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNmI4YjZia2hlZ3Y2c215NWRpd281anFzYnJjdDd3dm5jZmtydWRzMCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/mD4JnP3TyUSmwkFwpo/giphy.gif" width="400"/>
+</div>
+
 # 🌙 Mufadz — Muslim Life App
 
 **Mufadz App** adalah proyek latihan jangka panjang berbasis **TypeScript**, **Tailwind CSS**, dan **PERN/MERN Stack**.  
@@ -38,3 +42,4 @@ Proyek ini dibuat sebagai latihan pribadi, namun tetap terbuka untuk saran, atau
 ---
 
 📍 _Dibuat oleh [Mufacoderz](https://github.com/Mufacoderz) — untuk belajar, beramal, dan berbagi._
+
