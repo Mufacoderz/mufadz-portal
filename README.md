@@ -2,18 +2,17 @@
   <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNmI4YjZia2hlZ3Y2c215NWRpd281anFzYnJjdDd3dm5jZmtydWRzMCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/mD4JnP3TyUSmwkFwpo/giphy.gif" width="350"/>
 </div>
 
-# 🌙 Mufadz — Muslim Life App
+# 🌙 Mufadz Portal — Muslim Daily App
 
-**Mufadz App** adalah aplikasi Islami modern berbasis **React + TypeScript + Vite**, dibangun sebagai proyek jangka panjang untuk melatih skill **Fullstack Web Development (PERN/MERN)** sambil menciptakan aplikasi yang bermanfaat bagi umat Muslim.
+**Mufadz Portal** adalah aplikasi Islami modern berbasis **React + TypeScript**, dibangun sebagai proyek jangka panjang untuk melatih skill **Fullstack Web Development** sambil menciptakan aplikasi yang bermanfaat bagi umat Muslim.
 
-Aplikasi ini terus dikembangkan secara bertahap: dimulai dari fitur dasar seperti **Qur'an, Doa Harian, dan Panduan**, hingga fitur lanjutan seperti **Login, Chat, dan Reminder**.
+Aplikasi ini terus dikembangkan secara bertahap: dimulai dari fitur dasar seperti **Jadwal Sholat, Kalender, Qur'an, Doa Harian**, hingga fitur lanjutan seperti **Login, Chat, dan Reminder**.
 
 ---
 
 # 🚀 Tech Stack
 - **React + TypeScript + Vite**
 - **TailwindCSS**
-- **API Qur'an & Jadwal Sholat**
 - **(Rencana)** Node.js, Express, PostgreSQL/MongoDB
 
 ---
@@ -23,9 +22,8 @@ Membangun aplikasi Islami modern dengan fitur-fitur yang relevan untuk kehidupan
 
 - 🕌 Jadwal Sholat (lokasi pengguna)
 - 📅 Kalender Hijriyah & Masehi
-- 📖 Baca Al-Qur'an (List Surah & Detail Ayat)
-- 🤲 Doa Harian (List & Detail)
-- 📘 Panduan Ibadah
+- 📖 Baca Al-Qur'an
+- 🤲 Doa Harian
 - 🌗 Mode Gelap & Terang
 - 🔔 (Rencana) Reminder & Notifikasi
 - 💬 (Rencana) Chat Realtime
@@ -43,7 +41,6 @@ Proyek ini digunakan sebagai latihan nyata pengembangan aplikasi **fullstack mod
 - Kalender Hijriyah & Masehi  
 - Qur'an Digital (List Surah & Detail Ayat)  
 - List Doa Harian & Detail Doa  
-- Panduan Ibadah  
 - Light Mode & Dark Mode  
 
 > Fitur login, chat, dan reminder hadir setelah fondasi aplikasi stabil.
@@ -82,7 +79,7 @@ Proyek ini digunakan sebagai latihan nyata pengembangan aplikasi **fullstack mod
 
 ---
 
-# 📘 Panduan Islam
+# 📘 Panduan Aplikasi
 <img src="PreviewIMG/panduan.png" width="100%"/>
 
 ---
