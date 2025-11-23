@@ -7,7 +7,7 @@ type DetailSurahInfoProps = {
 
 function DetailSurahInfo({ surah }: DetailSurahInfoProps) {
   return (
-    <div className="relative rounded-2xl bg-textLight dark:bg-textDark text-white dark:text-gray-700 shadow-lg overflow-hidden w-full max-w-xl">
+    <div className="relative rounded-2xl bg-textLight dark:bg-textDark text-white dark:text-gray-700 shadow-lg overflow-hidden w-full ">
   <span className="absolute inset-0 rounded-2xl bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full animate-[shine_2.5s_infinite]" />
   <div className="py-4 px-4 pb-14 flex flex-col gap-2">
     <h2 className="font-bold tracking-wide text-[clamp(1rem,2vw,1.5rem)]">

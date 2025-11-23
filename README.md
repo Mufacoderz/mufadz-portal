@@ -1,45 +1,91 @@
 <div align="center">
-  <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNmI4YjZia2hlZ3Y2c215NWRpd281anFzYnJjdDd3dm5jZmtydWRzMCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/mD4JnP3TyUSmwkFwpo/giphy.gif" width="400"/>
+  <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNmI4YjZia2hlZ3Y2c215NWRpd281anFzYnJjdDd3dm5jZmtydWRzMCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/mD4JnP3TyUSmwkFwpo/giphy.gif" width="350"/>
 </div>
 
 # 🌙 Mufadz — Muslim Life App
 
-**Mufadz App** adalah proyek latihan jangka panjang berbasis **TypeScript**, **Tailwind CSS**, dan **PERN/MERN Stack**.  
-Tujuan utama proyek ini adalah untuk melatih skill web development modern sekaligus membangun **web app Islami** yang bermanfaat.
+**Mufadz App** adalah aplikasi Islami modern berbasis **React + TypeScript + Vite**, dibangun sebagai proyek jangka panjang untuk melatih skill **Fullstack Web Development (PERN/MERN)** sambil menciptakan aplikasi yang bermanfaat bagi umat Muslim.
+
+Aplikasi ini terus dikembangkan secara bertahap: dimulai dari fitur dasar seperti **Qur'an, Doa Harian, dan Panduan**, hingga fitur lanjutan seperti **Login, Chat, dan Reminder**.
 
 ---
 
-## 🎯 Tujuan Proyek
-Membangun aplikasi Islami dengan fitur-fitur yang relevan untuk kehidupan sehari-hari umat Muslim, seperti:
-- 🕌 Jadwal Sholat
+# 🚀 Tech Stack
+- **React + TypeScript + Vite**
+- **TailwindCSS**
+- **API Qur'an & Jadwal Sholat**
+- **(Rencana)** Node.js, Express, PostgreSQL/MongoDB
+
+---
+
+# 🎯 Tujuan Proyek
+Membangun aplikasi Islami modern dengan fitur-fitur yang relevan untuk kehidupan sehari-hari:
+
+- 🕌 Jadwal Sholat (lokasi pengguna)
 - 📅 Kalender Hijriyah & Masehi
-- 📖 Baca Al-Qur'an
-- 🔔 (Rencana) Reminder
+- 📖 Baca Al-Qur'an (List Surah & Detail Ayat)
+- 🤲 Doa Harian (List & Detail)
+- 📘 Panduan Ibadah
+- 🌗 Mode Gelap & Terang
+- 🔔 (Rencana) Reminder & Notifikasi
 - 💬 (Rencana) Chat Realtime
 - 👤 (Rencana) Sistem User / Login
-- etc...
+- ⚡ Dan fitur lain seiring peningkatan skill
 
-Aplikasi ini dikembangkan **step-by-step**, seiring dengan peningkatan skill dan pemahaman teknologi fullstack modern.
+Proyek ini digunakan sebagai latihan nyata pengembangan aplikasi **fullstack modern**, dikerjakan step-by-step agar setiap tahapan menjadi pembelajaran yang berarti.
 
 ---
 
-## ⚙️ Fase Pengembangan
+# ⚙️ Fase Pengembangan
 
 ### **Fase 1 — Guest Mode (Tanpa Login)**
-Fitur utama:
-- Menampilkan jadwal sholat berdasarkan lokasi pengguna.
-- Menyediakan kalender Hijriyah & Masehi.
-- Menyediakan Al-Qur'an Digital, serta beberapa do'a harian
+- Jadwal sholat realtime  
+- Kalender Hijriyah & Masehi  
+- Qur'an Digital (List Surah & Detail Ayat)  
+- List Doa Harian & Detail Doa  
+- Panduan Ibadah  
+- Light Mode & Dark Mode  
 
-> Login, chat realtime, dan fitur lainnya akan dikembangkan di fase berikutnya sesuai progress pembelajaran.
-
----
-
-## ✨ Catatan
-Proyek ini dibuat sebagai latihan pribadi, namun tetap terbuka untuk saran, atau masukan.  
-> Semua fitur akan dikembangkan secara bertahap agar setiap tahap menjadi pembelajaran yang bermakna.
+> Fitur login, chat, dan reminder hadir setelah fondasi aplikasi stabil.
 
 ---
 
-📍 _Dibuat oleh [Mufacoderz](https://github.com/Mufacoderz) — untuk belajar, beramal, dan berbagi._
+# 📱 Preview Aplikasi
+
+> Ganti path gambarnya sesuai foldermu, contoh: `/public/screenshots/...`
+
+---
+
+## 🏠 Home Page (Light Mode)
+<img src="PreviewIMG/home.png" width="500"/>
+
+## 🌙 Home Page (Dark Mode)
+<img src="PreviewIMG/homedark.png" width="500"/>
+
+---
+
+# 📖 Fitur Qur'an
+
+### 📚 List Surah
+<img src="PreviewIMG/daftarsurah.png" width="500"/>
+
+### 📜 Detail Surah & Ayat
+<img src="PreviewIMG/ayat.png" width="500"/>
+
+---
+
+# 🤲 Fitur Doa Harian
+
+### 🕌 List Doa
+<img src="PreviewIMG/daftardoa.png" width="500"/>
+
+### 📘 Detail Doa
+<img src="PreviewIMG/doa.png" width="500"/>
+
+---
+
+# 📘 Panduan Islam
+<img src="PreviewIMG/panduan.png" width="500"/>
+
+---
 
