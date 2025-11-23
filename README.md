@@ -52,40 +52,38 @@ Proyek ini digunakan sebagai latihan nyata pengembangan aplikasi **fullstack mod
 
 # 📱 Preview Aplikasi
 
-> Ganti path gambarnya sesuai foldermu, contoh: `/public/screenshots/...`
-
 ---
 
 ## 🏠 Home Page (Light Mode)
-<img src="PreviewIMG/home.png" width="500"/>
+<img src="PreviewIMG/home.png" width="100%"/>
 
 ## 🌙 Home Page (Dark Mode)
-<img src="PreviewIMG/homedark.png" width="500"/>
+<img src="PreviewIMG/homedark.png" width="100%"/>
 
 ---
 
 # 📖 Fitur Qur'an
 
 ### 📚 List Surah
-<img src="PreviewIMG/daftarsurah.png" width="500"/>
+<img src="PreviewIMG/daftarsurah.png" width="100%"/>
 
 ### 📜 Detail Surah & Ayat
-<img src="PreviewIMG/ayat.png" width="500"/>
+<img src="PreviewIMG/ayat.png" width="100%"/>
 
 ---
 
 # 🤲 Fitur Doa Harian
 
 ### 🕌 List Doa
-<img src="PreviewIMG/daftardoa.png" width="500"/>
+<img src="PreviewIMG/daftardoa.png" width="100%"/>
 
 ### 📘 Detail Doa
-<img src="PreviewIMG/doa.png" width="500"/>
+<img src="PreviewIMG/doa.png" width="100%"/>
 
 ---
 
 # 📘 Panduan Islam
-<img src="PreviewIMG/panduan.png" width="500"/>
+<img src="PreviewIMG/panduan.png" width="100%"/>
 
 ---
 
