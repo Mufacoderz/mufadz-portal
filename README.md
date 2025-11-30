@@ -53,9 +53,11 @@ Proyek ini digunakan sebagai latihan nyata pengembangan aplikasi **fullstack mod
 
 ## 🏠 Home Page (Light Mode)
 <img src="PreviewIMG/home.png" width="100%"/>
+<img src="PreviewIMG/home2.png" width="100%"/>
 
 ## 🌙 Home Page (Dark Mode)
 <img src="PreviewIMG/homedark.png" width="100%"/>
+<img src="PreviewIMG/home2dark.png" width="100%"/>
 
 ---
 
