@@ -8,7 +8,7 @@ const PanduanSupport = () => {
                 </p>
                 <a
                     href="https://github.com/Mufacoderz"
-                    className="inline-block px-6 py-3 bg-blue-500 dark:bg-blue-300 text-white dark:text-gray-800 font-medium rounded-lg shadow hover:bg-blue-600 transition"
+                    className="inline-block px-6 py-3 bg-textLight dark:bg-textDark text-white dark:text-gray-800 font-medium rounded-lg shadow hover:bg-blue-600 transition"
                 >
                     Hubungi Support
                 </a>
