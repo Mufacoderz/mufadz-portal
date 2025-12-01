@@ -4,7 +4,7 @@
 
 # 🌙 Mufadz Portal — Muslim Daily App
 
-**Mufadz Portal** adalah aplikasi Islami modern berbasis **React + TypeScript**, dibangun sebagai proyek jangka panjang untuk melatih skill **Fullstack Web Development** sambil menciptakan aplikasi yang bermanfaat bagi umat Muslim.
+**Mufadz Portal** adalah aplikasi Islami modern berbasis **React + TypeScript**, dan next versi menggunakan **Express** serta **MySql** untuk backend dan database, Web app ini dibangun sebagai proyek jangka panjang untuk melatih skill **Fullstack Web Development** sambil menciptakan aplikasi yang bermanfaat bagi umat Muslim.
 
 Aplikasi ini terus dikembangkan secara bertahap: dimulai dari fitur dasar seperti **Jadwal Sholat, Kalender, Qur'an, Doa Harian**, hingga fitur lanjutan seperti **Login, Chat, dan Reminder**.
 
@@ -85,4 +85,5 @@ Proyek ini digunakan sebagai latihan nyata pengembangan aplikasi **fullstack mod
 <img src="PreviewIMG/panduan.png" width="100%"/>
 
 ---
+
 
