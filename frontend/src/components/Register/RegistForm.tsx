@@ -9,15 +9,18 @@ const RegistForm = () => {
 
     const handleRegister = async (e: React.FormEvent) => {
         e.preventDefault();
-
-        const res = await fetch("http://localhost:5000/auth/register", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ nama, email, password })
-        });
-
-        const data = await res.json();
-        alert(data.message);
+        try {
+            const res = await fetch("http://localhost:8000/auth/register.php", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ nama, email, password }),
+            });
+            const data = await res.json();
+            alert(data.message);
+        } catch (err) {
+            console.error(err);
+            alert("Gagal connect ke server");
+        }
     };
 
     return (
@@ -28,7 +31,9 @@ const RegistForm = () => {
 
             <form className="space-y-4 sm:space-y-5" onSubmit={handleRegister}>
                 <div>
-                    <label className="block mb-2 text-sm sm:text-base font-medium">Nama Lengkap</label>
+                    <label className="block mb-2 text-sm sm:text-base font-medium">
+                        Nama Lengkap
+                    </label>
                     <input
                         type="text"
                         placeholder="Nama lengkap"
@@ -39,7 +44,9 @@ const RegistForm = () => {
                 </div>
 
                 <div>
-                    <label className="block mb-2 text-sm sm:text-base font-medium">Email</label>
+                    <label className="block mb-2 text-sm sm:text-base font-medium">
+                        Email
+                    </label>
                     <input
                         type="email"
                         placeholder="email@example.com"
@@ -50,7 +57,9 @@ const RegistForm = () => {
                 </div>
 
                 <div>
-                    <label className="block mb-2 text-sm sm:text-base font-medium">Password</label>
+                    <label className="block mb-2 text-sm sm:text-base font-medium">
+                        Password
+                    </label>
                     <input
                         type="password"
                         placeholder="********"
