@@ -1,54 +1,84 @@
 <?php
+ini_set('display_errors', 0);
+error_reporting(0);
+
+header("Content-Type: application/json");
 header("Access-Control-Allow-Origin: http://localhost:5173");
 header("Access-Control-Allow-Methods: POST, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type");
 
-include "../config/db.php";
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    http_response_code(200);
+    echo json_encode(["ok" => true]);
+    exit;
+}
 
+
+
+header("Content-Type: application/json");
+header("Access-Control-Allow-Origin: http://localhost:5173");
+header("Access-Control-Allow-Methods: POST, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type");
 
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     exit;
 }
 
+require_once __DIR__ . '/../config/koneksi.php';
 
-// Ambil data JSON dari FE
+// Ambil data JSON
 $input = json_decode(file_get_contents("php://input"), true);
 
-$nama = $input['nama'] ?? '';
-$email = $input['email'] ?? '';
+$nama = trim($input['nama'] ?? '');
+$email = trim($input['email'] ?? '');
 $password = $input['password'] ?? '';
 
-// Validasi sederhana
-if (!$nama || !$email || !$password) {
-    echo json_encode(["success"=>false, "message"=>"Semua field wajib diisi"]);
+// Validasi
+if ($nama === '' || $email === '' || $password === '') {
+    echo json_encode([
+        "success" => false,
+        "message" => "Semua field wajib diisi"
+    ]);
     exit;
 }
 
-// cek email sudah ada
-$stmt = $conn->prepare("SELECT * FROM users WHERE email = ?");
+// Cek email
+$stmt = $conn->prepare("SELECT id FROM users WHERE email = ?");
 $stmt->bind_param("s", $email);
 $stmt->execute();
-$result = $stmt->get_result();
+$stmt->store_result();
 
-if ($result->num_rows > 0) {
-    echo json_encode(["success"=>false, "message"=>"Email sudah terdaftar"]);
+if ($stmt->num_rows > 0) {
+    echo json_encode([
+        "success" => false,
+        "message" => "Email sudah terdaftar"
+    ]);
+    $stmt->close();
     exit;
 }
+$stmt->close();
 
-// hash password sebelum simpan (lebih aman)
+// Hash password
 $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-// insert user baru
-$stmt = $conn->prepare("INSERT INTO users (name,email,password) VALUES (?,?,?)");
+// Insert user
+$stmt = $conn->prepare(
+    "INSERT INTO users (name, email, password) VALUES (?, ?, ?)"
+);
 $stmt->bind_param("sss", $nama, $email, $hashedPassword);
 $stmt->execute();
 
 if ($stmt->affected_rows > 0) {
-    echo json_encode(["success"=>true, "message"=>"Register berhasil"]);
+    echo json_encode([
+        "success" => true,
+        "message" => "Register berhasil"
+    ]);
 } else {
-    echo json_encode(["success"=>false, "message"=>"Gagal mendaftar, coba lagi"]);
+    echo json_encode([
+        "success" => false,
+        "message" => "Gagal mendaftar"
+    ]);
 }
 
 $stmt->close();
 $conn->close();
-?>

@@ -13,6 +13,6 @@ if(!$conn){
 
 
 
-echo "Berhasil koneksi";
+// echo "Berhasil koneksi";
 
 ?>

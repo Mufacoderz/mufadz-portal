@@ -9,17 +9,26 @@ const RegistForm = () => {
 
     const handleRegister = async (e: React.FormEvent) => {
         e.preventDefault();
+
         try {
             const res = await fetch("http://localhost:8000/auth/register.php", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ nama, email, password }),
+                body: JSON.stringify({
+                    nama: "debug",
+                    email: "debug@mail.com",
+                    password: "123456",
+                }),
             });
-            const data = await res.json();
+
+            const text = await res.text();
+            console.log("RAW REGISTER RESPONSE >>>", text);
+
+            const data = JSON.parse(text);
             alert(data.message);
         } catch (err) {
-            console.error(err);
-            alert("Gagal connect ke server");
+            console.error("FETCH ERROR:", err);
+            alert("Server error / response bukan JSON");
         }
     };
 
