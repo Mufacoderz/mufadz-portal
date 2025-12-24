@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+    <url>
+        <loc>https://mufadz-app.vercel.app/</loc>
+        <priority>1.0</priority>
+    </url>
+
+    <url>
+        <loc>https://mufadz-app.vercel.app/chat</loc>
+    </url>
+
+    <url>
+        <loc>https://mufadz-app.vercel.app/quran</loc>
+    </url>
+
+    <url>
+        <loc>https://mufadz-app.vercel.app/doa</loc>
+    </url>
+
+    <url>
+        <loc>https://mufadz-app.vercel.app/panduan</loc>
+    </url>
+
+    <url>
+        <loc>https://mufadz-app.vercel.app/register</loc>
+    </url>
+
+    <url>
+        <loc>https://mufadz-app.vercel.app/login</loc>
+    </url>
+
+</urlset>
