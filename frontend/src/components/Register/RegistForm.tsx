@@ -2,33 +2,43 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
-const RegistForm = () => {
-    const [nama, setNama] = useState("");
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+const RegistForm: React.FC = () => {
+    const [nama, setNama] = useState<string>("");
+    const [email, setEmail] = useState<string>("");
+    const [password, setPassword] = useState<string>("");
 
-    const handleRegister = async (e: React.FormEvent) => {
+    const handleSubmit = async (
+        e: React.FormEvent<HTMLFormElement>
+    ): Promise<void> => {
         e.preventDefault();
 
         try {
-            const res = await fetch("http://localhost:8000/auth/register.php", {
+            const res = await fetch("http://localhost:5000/api/register", {
                 method: "POST",
-                headers: { "Content-Type": "application/json" },
+                headers: {
+                    "Content-Type": "application/json",
+                },
                 body: JSON.stringify({
-                    nama: "debug",
-                    email: "debug@mail.com",
-                    password: "123456",
+                    nama,
+                    email,
+                    password,
                 }),
             });
 
-            const text = await res.text();
-            console.log("RAW REGISTER RESPONSE >>>", text);
+            const data: { message?: string } = await res.json();
 
-            const data = JSON.parse(text);
-            alert(data.message);
+            if (!res.ok) {
+                alert(data.message ?? "Register gagal");
+                return;
+            }
+
+            alert("Register berhasil!");
+            setNama("");
+            setEmail("");
+            setPassword("");
         } catch (err) {
-            console.error("FETCH ERROR:", err);
-            alert("Server error / response bukan JSON");
+            console.error(err);
+            alert("Server error");
         }
     };
 
@@ -38,7 +48,10 @@ const RegistForm = () => {
                 Daftar Akun Baru
             </h2>
 
-            <form className="space-y-4 sm:space-y-5" onSubmit={handleRegister}>
+            <form
+                className="space-y-4 sm:space-y-5"
+                onSubmit={handleSubmit}
+            >
                 <div>
                     <label className="block mb-2 text-sm sm:text-base font-medium">
                         Nama Lengkap
@@ -47,7 +60,9 @@ const RegistForm = () => {
                         type="text"
                         placeholder="Nama lengkap"
                         value={nama}
-                        onChange={(e) => setNama(e.target.value)}
+                        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                            setNama(e.target.value)
+                        }
                         className="w-full p-3 sm:p-3.5 rounded-lg bg-white/20 border border-white/30 focus:ring-2 focus:ring-blue-400 outline-none"
                     />
                 </div>
@@ -60,7 +75,9 @@ const RegistForm = () => {
                         type="email"
                         placeholder="email@example.com"
                         value={email}
-                        onChange={(e) => setEmail(e.target.value)}
+                        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                            setEmail(e.target.value)
+                        }
                         className="w-full p-3 sm:p-3.5 rounded-lg bg-white/20 border border-white/30 focus:ring-2 focus:ring-blue-400 outline-none"
                     />
                 </div>
@@ -73,7 +90,9 @@ const RegistForm = () => {
                         type="password"
                         placeholder="********"
                         value={password}
-                        onChange={(e) => setPassword(e.target.value)}
+                        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                            setPassword(e.target.value)
+                        }
                         className="w-full p-3 sm:p-3.5 rounded-lg bg-white/20 border border-white/30 focus:ring-2 focus:ring-blue-400 outline-none"
                     />
                 </div>
