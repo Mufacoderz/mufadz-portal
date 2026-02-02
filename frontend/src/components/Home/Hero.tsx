@@ -39,7 +39,9 @@ const Hero = () => {
                     transition={{ duration: 2, ease: "easeInOut", repeat: Infinity }}
                     className="px-6 py-3 bg-textLight dark:bg-textDark text-white dark:text-gray-800 font-semibold rounded-xl shadow-md hover:bg-blue-700 dark:hover:bg-blue-200 hover:shadow-lg transition-all"
                 >
-                    Mulai Sekarang
+                    <Link to={"/quran"}>
+                        Baca Qur'an 
+                    </Link>
                 </motion.div>
 
                 <motion.div
@@ -57,3 +59,4 @@ const Hero = () => {
 };
 
 export default Hero;
+
