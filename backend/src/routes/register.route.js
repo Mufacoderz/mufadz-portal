@@ -1,9 +1,9 @@
-const express = require("express");
+import express from "express";
+
 const router = express.Router();
 
-const { register } = require("../controllers/register.controller");
+router.post("/", (req, res) => {
+    res.json({ message: "Register route OK" });
+});
 
-// POST /api/register
-router.post("/", register);
-
-module.exports = router;
+export default router;
