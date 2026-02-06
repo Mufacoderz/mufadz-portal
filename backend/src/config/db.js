@@ -1,4 +1,4 @@
-import mysql from "mysql2";
+import mysql from "mysql2/promise";
 
 const db = mysql.createPool({
     host: "localhost",
@@ -7,14 +7,14 @@ const db = mysql.createPool({
     database: "mufadz_db",
 });
 
-db.getConnection((err, connection) => {
-    if (err) {
-    console.error("DB gagal konek:", err.message);
-    } else {
-    console.log("DB berhasil terkoneksi");
-    connection.release();
+(async () => {
+    try {
+        const conn = await db.getConnection();
+        console.log("✅ DB berhasil terkoneksi");
+        conn.release();
+    } catch (err) {
+        console.error("❌ DB gagal konek:", err.message);
     }
-});
-
+})();
 
 export default db;
