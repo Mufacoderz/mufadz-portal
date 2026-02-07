@@ -1,7 +1,12 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
+
+    const navigate = useNavigate();
+
+
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
@@ -19,6 +24,7 @@ const LoginForm = () => {
         if (data.token) {
             localStorage.setItem("token", data.token);
             alert("Login Berhasil!");
+            navigate("/")
         } else {
             alert(data.message);
         }

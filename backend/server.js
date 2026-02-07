@@ -1,12 +1,14 @@
 import express from "express";
 import cors from "cors";
 import registerRoute from "./routes/register.route.js";
+import authRoute from "./routes/auth.route.js";
 
 const app = express();
 const PORT = 5050;
 
 app.use(cors());
 app.use(express.json());
+app.use("/auth", authRoute);
 
 app.get("/", (req, res) => {
     res.send("SERVER OK");
