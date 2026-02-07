@@ -1,5 +1,14 @@
-
+### TEST SERVER
+GET http://localhost:5050/
 
 
 ###
-POST http://localhost:5000/ping
+### REGISTER USER
+POST http://localhost:5050/api/register
+Content-Type: application/json
+
+{
+  "name": "Fadil",
+  "email": "fadil@test.com",
+  "password": "123456"
+}

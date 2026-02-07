@@ -1,11 +1,14 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const RegistForm: React.FC = () => {
-    const [nama, setNama] = useState<string>("");
+    const [name, setName] = useState<string>("");
     const [email, setEmail] = useState<string>("");
     const [password, setPassword] = useState<string>("");
+
+    const navigate = useNavigate();
+
 
     const handleSubmit = async (
         e: React.FormEvent<HTMLFormElement>
@@ -13,13 +16,13 @@ const RegistForm: React.FC = () => {
         e.preventDefault();
 
         try {
-            const res = await fetch("http://localhost:5000/api/register", {
+            const res = await fetch("http://localhost:5050/api/register", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify({
-                    nama,
+                    name,
                     email,
                     password,
                 }),
@@ -33,9 +36,10 @@ const RegistForm: React.FC = () => {
             }
 
             alert("Register berhasil!");
-            setNama("");
+            setName("");
             setEmail("");
             setPassword("");
+            navigate("/login");
         } catch (err) {
             console.error(err);
             alert("Server error");
@@ -59,9 +63,9 @@ const RegistForm: React.FC = () => {
                     <input
                         type="text"
                         placeholder="Nama lengkap"
-                        value={nama}
+                        value={name}
                         onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                            setNama(e.target.value)
+                            setName(e.target.value)
                         }
                         className="w-full p-3 sm:p-3.5 rounded-lg bg-white/20 border border-white/30 focus:ring-2 focus:ring-blue-400 outline-none"
                     />
