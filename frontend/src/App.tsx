@@ -13,7 +13,7 @@ import ChatBot from "./pages/ChatBot";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import ProtectedRoute from "./components/ProtectedRoute";
-import AdminDashboard from "./pages/admin/Dashboard";
+import AdminDashboard from "./pages/admin/Dashboard"
 
 function AppContent() {
   const location = useLocation();

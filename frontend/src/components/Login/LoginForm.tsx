@@ -1,42 +1,48 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+import { jwtDecode } from "jwt-decode";
+
+interface DecodedToken {
+    id: number;
+    email: string;
+    role: string;
+    exp: number;
+}
 
 const LoginForm = () => {
-
     const navigate = useNavigate();
-
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
     const handleLogin = async (e: React.FormEvent) => {
-    e.preventDefault();
+        e.preventDefault();
 
-    const res = await fetch("http://localhost:5050/auth/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password })
-    });
+        const res = await fetch("http://localhost:5050/api/auth/login", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email, password }),
+        });
 
-    const data = await res.json();
+        const data = await res.json();
 
-    if (data.token) {
-        localStorage.setItem("token", data.token);
-        localStorage.setItem("role", data.user.role);
+        if (data.token) {
+            localStorage.setItem("token", data.token);
 
-        alert("Login Berhasil!");
+            const decoded = jwtDecode<DecodedToken>(data.token);
 
-        if (data.user.role === "admin") {
-            navigate("/admin");
+            alert("Login Berhasil!");
+
+            if (decoded.role === "admin") {
+                navigate("/admin");
+            } else {
+                navigate("/");
+            }
         } else {
-            navigate("/");
+            alert(data.message);
         }
-    } else {
-        alert(data.message);
-    }
-};
-
+    };
 
     return (
         <div className="max-w-md w-full mx-auto px-4 sm:px-6 lg:px-8">
@@ -46,7 +52,9 @@ const LoginForm = () => {
 
             <form className="space-y-4 sm:space-y-5" onSubmit={handleLogin}>
                 <div>
-                    <label className="block mb-2 text-sm sm:text-base font-medium">Email</label>
+                    <label className="block mb-2 text-sm sm:text-base font-medium">
+                        Email
+                    </label>
                     <input
                         type="email"
                         placeholder="email@example.com"
@@ -57,7 +65,9 @@ const LoginForm = () => {
                 </div>
 
                 <div>
-                    <label className="block mb-2 text-sm sm:text-base font-medium">Password</label>
+                    <label className="block mb-2 text-sm sm:text-base font-medium">
+                        Password
+                    </label>
                     <input
                         type="password"
                         placeholder="********"
