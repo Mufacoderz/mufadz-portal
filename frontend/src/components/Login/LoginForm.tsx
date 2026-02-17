@@ -11,24 +11,32 @@ const LoginForm = () => {
     const [password, setPassword] = useState("");
 
     const handleLogin = async (e: React.FormEvent) => {
-        e.preventDefault();
+    e.preventDefault();
 
-        const res = await fetch("http://localhost:5050/auth/login", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ email, password })
-        });
+    const res = await fetch("http://localhost:5050/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password })
+    });
 
-        const data = await res.json();
+    const data = await res.json();
 
-        if (data.token) {
-            localStorage.setItem("token", data.token);
-            alert("Login Berhasil!");
-            navigate("/")
+    if (data.token) {
+        localStorage.setItem("token", data.token);
+        localStorage.setItem("role", data.user.role);
+
+        alert("Login Berhasil!");
+
+        if (data.user.role === "admin") {
+            navigate("/admin");
         } else {
-            alert(data.message);
+            navigate("/");
         }
-    };
+    } else {
+        alert(data.message);
+    }
+};
+
 
     return (
         <div className="max-w-md w-full mx-auto px-4 sm:px-6 lg:px-8">

@@ -20,12 +20,14 @@ export const register = async (req, res) => {
 
         const hash = await bcrypt.hash(password, 10);
 
+        // role otomatis user
         await db.query(
-            "INSERT INTO users (name, email, password) VALUES (?, ?, ?)",
-            [name, email, hash]
+            "INSERT INTO users (name, email, password, role) VALUES (?, ?, ?, ?)",
+            [name, email, hash, "user"]
         );
 
         res.status(201).json({ message: "Register berhasil" });
+
     } catch (err) {
         console.error("REGISTER ERROR:", err);
         res.status(500).json({ message: "Server error" });
