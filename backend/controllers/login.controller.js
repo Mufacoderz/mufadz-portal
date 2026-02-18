@@ -27,6 +27,10 @@ export const login = async (req, res) => {
             return res.status(401).json({ message: "Password salah" });
         }
 
+        if (!process.env.JWT_SECRET) {
+            return res.status(500).json({ message: "JWT_SECRET belum diset" });
+        }
+
         const token = jwt.sign(
             {
                 id: user.id,
