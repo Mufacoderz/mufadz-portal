@@ -65,7 +65,7 @@ const Sidebar = () => {
     ) => {
         if (needAuth && !isLoggedIn) {
             e.preventDefault();
-            const goLogin = confirm("Login dulu?");
+            const goLogin = confirm("Login dulu");
             if (goLogin) navigate("/login");
         }
     };

@@ -35,7 +35,7 @@ const LoginForm = () => {
             alert("Login Berhasil!");
 
             if (decoded.role === "admin") {
-                navigate("/admin");
+                navigate("/admin/dashboard");
             } else {
                 navigate("/");
             }
