@@ -1,29 +1,44 @@
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
-import Sidebar from "./components/Sidebar/Sidebar";
-import ChatGlobal from "./pages/ChatPage";
-import QuranList from "./pages/QuranPage/QuranList";
-import DetailSurahPage from "./pages/QuranPage/DetailSurah";
-import Profile from "./pages/ProfilePage";
-import Homepages from "./pages/HomePage";
-import DoaList from "./pages/DoaPage/DoaList";
-import DoaDetail from "./pages/DoaPage/DoaDetail";
-import Panduan from "./pages/PanduanPage";
-import DarkModeToggle from "./components/DarkModeToggle";
-import ChatBot from "./pages/ChatBot";
-import Login from "./pages/Login";
-import Register from "./pages/Register";
-import ProtectedRoute from "./components/ProtectedRoute";
-import AdminDashboard from "./pages/admin/Dashboard"
+import { useLocation } from "react-router-dom";
+import Sidebar from "./components/public/Sidebar/Sidebar";
+import SidebarAdmin from "./components/admin/Sidebar/Sidebar";
+import DarkModeToggle from "./components/public/DarkModeToggle";
+import { useEffect, useState } from "react";
+import { Route, Routes } from "react-router-dom";
+
+// pages
+import ChatGlobal from "./pages/public/ChatPage";
+import QuranList from "./pages/public/QuranPage/QuranList";
+import DetailSurahPage from "./pages/public/QuranPage/DetailSurah";
+import Profile from "./pages/public/ProfilePage";
+import Homepages from "./pages/public/HomePage";
+import DoaList from "./pages/public/DoaPage/DoaList";
+import DoaDetail from "./pages/public/DoaPage/DoaDetail";
+import Panduan from "./pages/public/PanduanPage";
+import ChatBot from "./pages/public/ChatBot";
+import Login from "./pages/public/Login";
+import Register from "./pages/public/Register";
+import AdminDashboard from "./pages/admin/Dashboard";
+import ProtectedRoute from "./components/public/ProtectedRoute";
 
 function AppContent() {
   const location = useLocation();
+  const [isAdmin, setIsAdmin] = useState(false);
 
-  const hideSidebarRoutes = ["/login", "/register", "/admin"];
+  // cek apakah admin login
+  useEffect(() => {
+    const token = localStorage.getItem("adminToken");
+    setIsAdmin(!!token);
+  }, [location.pathname]);
+
+  // routes yang tidak perlu sidebar
+  const hideSidebarRoutes = ["/login", "/register"];
   const hideSidebar = hideSidebarRoutes.includes(location.pathname);
 
   return (
     <div className="flex min-h-screen bg-gray-50">
-      {!hideSidebar && <Sidebar />}
+      {/* Sidebar */}
+      {!hideSidebar && (isAdmin ? <SidebarAdmin /> : <Sidebar />)}
+
       <DarkModeToggle />
 
       <main
@@ -77,12 +92,4 @@ function AppContent() {
   );
 }
 
-function App() {
-  return (
-    <BrowserRouter>
-      <AppContent />
-    </BrowserRouter>
-  );
-}
-
-export default App;
+export default AppContent;
