@@ -1,6 +1,7 @@
-import { useLocation, Navigate, Route, Routes } from "react-router-dom";
+// App.tsx
+import { BrowserRouter, useLocation, Navigate, Route, Routes } from "react-router-dom";
 import { useEffect, useState } from "react";
-import {jwtDecode} from "jwt-decode";
+import { jwtDecode } from "jwt-decode";
 
 import Sidebar from "./components/public/Sidebar/Sidebar";
 import SidebarAdmin from "./components/admin/SidebarAdmin/Sidebar";
@@ -18,17 +19,14 @@ import ChatBot from "./pages/public/ChatBot";
 import Login from "./pages/public/Login";
 import Register from "./pages/public/Register";
 import AdminDashboard from "./pages/admin/Dashboard";
-// import AdminUsers from "./pages/admin/Users";
-// import AdminContent from "./pages/admin/Content";
 
 interface DecodedToken {
-  id: number;
-  email: string;
-  role: string;
-  exp: number;
+  id?: number;
+  email?: string;
+  role?: string;
+  exp?: number;
 }
 
-// ProtectedRoute Component
 interface ProtectedRouteProps {
   children: React.ReactNode;
   requiredRole?: string;
@@ -36,14 +34,23 @@ interface ProtectedRouteProps {
 
 const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children, requiredRole }) => {
   const token = localStorage.getItem("token");
-  if (!token) return <Navigate to="/login" />;
+
+  if (!token) return <Navigate to="/login" replace />;
+
+  if (token.split(".").length !== 3) {
+    localStorage.removeItem("token");
+    return <Navigate to="/login" replace />;
+  }
 
   try {
     const decoded = jwtDecode<DecodedToken>(token);
-    if (requiredRole && decoded.role !== requiredRole) return <Navigate to="/" />;
-  } catch {
+    if (requiredRole && decoded?.role !== requiredRole) {
+      return <Navigate to="/" replace />;
+    }
+  } catch (error) {
+    console.error("Token decode error:", error);
     localStorage.removeItem("token");
-    return <Navigate to="/login" />;
+    return <Navigate to="/login" replace />;
   }
 
   return <>{children}</>;
@@ -53,29 +60,35 @@ function AppContent() {
   const location = useLocation();
   const [role, setRole] = useState<string>("");
 
-  // cngambil role dri tokennya
   useEffect(() => {
     const token = localStorage.getItem("token");
-    if (token) {
-      try {
-        const decoded = jwtDecode<DecodedToken>(token);
-        setRole(decoded.role);
-      } catch {
-        setRole("");
-        localStorage.removeItem("token");
-      }
-    } else {
+
+    if (!token) {
+      setRole("");
+      return;
+    }
+
+    if (token.split(".").length !== 3) {
+      localStorage.removeItem("token");
+      setRole("");
+      return;
+    }
+
+    try {
+      const decoded = jwtDecode<DecodedToken>(token);
+      setRole(decoded?.role ?? "");
+    } catch (error) {
+      console.error("JWT decode gagal:", error);
+      localStorage.removeItem("token");
       setRole("");
     }
-  }, [location.pathname]);
+  }, []);
 
-  // route yg tidak perlu ada sidebar
   const hideSidebarRoutes = ["/login", "/register"];
   const hideSidebar = hideSidebarRoutes.includes(location.pathname);
 
   return (
     <div className="flex min-h-screen bg-gray-50">
-      {/* Sidebar */}
       {!hideSidebar && (role === "admin" ? <SidebarAdmin /> : <Sidebar />)}
 
       <DarkModeToggle />
@@ -124,26 +137,16 @@ function AppContent() {
               </ProtectedRoute>
             }
           />
-          {/* <Route
-            path="/admin/users"
-            element={
-              <ProtectedRoute requiredRole="admin">
-                <AdminUsers />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/admin/content"
-            element={
-              <ProtectedRoute requiredRole="admin">
-                <AdminContent />
-              </ProtectedRoute>
-            }
-          /> */}
         </Routes>
       </main>
     </div>
   );
 }
 
-export default AppContent;
+export default function App() {
+  return (
+    <BrowserRouter>
+      <AppContent />
+    </BrowserRouter>
+  );
+}
