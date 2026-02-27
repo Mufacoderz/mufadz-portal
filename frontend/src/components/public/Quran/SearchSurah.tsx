@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import type { Surah } from "../../../types/surah";
 
 type SearchSurahProps = {
@@ -6,47 +6,62 @@ type SearchSurahProps = {
     surahs?: Surah[];
 };
 
+// debounce helper — tunda eksekusi sampai user berhenti ngetik
+function useDebounce<T>(value: T, delay: number): T {
+    const [debounced, setDebounced] = useState(value);
+    useEffect(() => {
+        const timer = setTimeout(() => setDebounced(value), delay);
+        return () => clearTimeout(timer);
+    }, [value, delay]);
+    return debounced;
+}
+
 function SearchSurah({ onSearch, surahs = [] }: SearchSurahProps) {
     const [query, setQuery] = useState("");
     const [isFocused, setIsFocused] = useState(false);
     const [suggestions, setSuggestions] = useState<Surah[]>([]);
     const inputRef = useRef<HTMLInputElement>(null);
 
+    // query yg "asli" update tiap keystroke (biar input responsif)
+    // tapi filtering & onSearch baru jalan setelah 250ms tidak ada ketikan
+    const debouncedQuery = useDebounce(query, 250);
+
     useEffect(() => {
-        if (query.trim() === "") {
+        const q = debouncedQuery.trim().toLowerCase();
+        if (!q) {
             setSuggestions([]);
+            onSearch("");
             return;
         }
 
-        const filtered = surahs
-            .filter(
-                (s) =>
-                    s.namaLatin.toLowerCase().includes(query.toLowerCase()) ||
-                    s.arti.toLowerCase().includes(query.toLowerCase()) ||
-                    String(s.nomor).includes(query)
-            )
-            .slice(0, 5);
+        const filtered = surahs.filter(
+            (s) =>
+                s.namaLatin.toLowerCase().includes(q) ||
+                s.arti.toLowerCase().includes(q) ||
+                String(s.nomor).includes(q)
+        );
 
-        setSuggestions(filtered);
-    }, [query, surahs]);
+        setSuggestions(filtered.slice(0, 5));
+        onSearch(debouncedQuery);
+    }, [debouncedQuery, surahs]);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setQuery(e.target.value);
-        onSearch(e.target.value);
+        setQuery(e.target.value); // input tetap responsif
+        // onSearch TIDAK dipanggil di sini — biar debounce yang handle
     };
 
-    const handleClear = () => {
+    const handleClear = useCallback(() => {
         setQuery("");
-        onSearch("");
         setSuggestions([]);
+        onSearch("");
         inputRef.current?.focus();
-    };
+    }, [onSearch]);
 
-    const handleSelectSuggestion = (surah: Surah) => {
+    const handleSelectSuggestion = useCallback((surah: Surah) => {
         setQuery(surah.namaLatin);
         onSearch(surah.namaLatin);
         setSuggestions([]);
-    };
+    }, [onSearch]);
 
     return (
         <div className="px-5 pb-2 relative">
@@ -58,7 +73,6 @@ function SearchSurah({ onSearch, surahs = [] }: SearchSurahProps) {
                         : "border-blue-100 dark:border-gray-700"
                     }`}
             >
-                {/* Search Icon */}
                 <svg
                     className={`w-5 h-5 shrink-0 transition-colors duration-300 ${isFocused ? "text-blue-500 dark:text-blue-400" : "text-gray-400 dark:text-gray-500"}`}
                     fill="none"
@@ -85,7 +99,6 @@ function SearchSurah({ onSearch, surahs = [] }: SearchSurahProps) {
                         placeholder:text-gray-400 dark:placeholder:text-gray-500"
                 />
 
-                {/* Clear button */}
                 {query && (
                     <button
                         onClick={handleClear}
@@ -100,7 +113,6 @@ function SearchSurah({ onSearch, surahs = [] }: SearchSurahProps) {
                 )}
             </div>
 
-            {/* Suggestions Dropdown */}
             {suggestions.length > 0 && (
                 <div className="absolute left-5 right-5 top-[calc(100%-4px)] z-50
                     bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm
