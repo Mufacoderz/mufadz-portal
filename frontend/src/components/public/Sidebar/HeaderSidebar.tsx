@@ -1,5 +1,5 @@
-import Profil from '../../assets/ProfilKosong.webp'
-import Logo from '../../assets/logo.webp'
+import Profil from '../../../assets/ProfilKosong.webp'
+import Logo from '../../../assets/logo.webp'
 import { Link } from 'react-router-dom'
 
 const HeaderSidebar = () => {

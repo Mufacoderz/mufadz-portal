@@ -1,5 +1,5 @@
-import PlayIcon from "../../assets/PlayIcon.svg";
-import PauseIcon from "../../assets/PauseIcon.svg";
+import PlayIcon from "../../../assets/PlayIcon.svg";
+import PauseIcon from "../../../assets/PauseIcon.svg";
 
 type AudioControlProps = {
   currentReciter: string;

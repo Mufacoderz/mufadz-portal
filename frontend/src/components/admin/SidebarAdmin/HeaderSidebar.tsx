@@ -1,4 +1,4 @@
-import Logo from '../../assets/logo.webp'
+import Logo from '../../../assets/logo.webp'
 import { Link } from 'react-router-dom'
 
 const HeaderSidebarAdmin = () => {

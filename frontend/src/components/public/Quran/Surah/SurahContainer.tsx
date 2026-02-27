@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import SurahList from "./SurahList";
+import SearchSurah from "../SearchSurah";
 import type { Surah } from "../../../../types/surah";
 
 function SurahContainer() {
   const [surahs, setSurahs] = useState<Surah[]>([]);
+  const [filtered, setFiltered] = useState<Surah[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -16,6 +18,7 @@ function SurahContainer() {
         }
         const data = await response.json();
         setSurahs(data.data);
+        setFiltered(data.data);
         setIsLoading(false);
       } catch (error) {
         setError(error instanceof Error ? error.message : "Unknown error");
@@ -26,6 +29,23 @@ function SurahContainer() {
     fetchSurahs();
   }, []);
 
+  const handleSearch = (query: string) => {
+    if (query.trim() === "") {
+      setFiltered(surahs);
+      return;
+    }
+
+    const q = query.toLowerCase();
+    setFiltered(
+      surahs.filter(
+        (s) =>
+          s.namaLatin.toLowerCase().includes(q) ||
+          s.arti.toLowerCase().includes(q) ||
+          String(s.nomor).includes(q)
+      )
+    );
+  };
+
   if (isLoading) {
     return <p>Loading...</p>;
   }
@@ -34,7 +54,12 @@ function SurahContainer() {
     return <p>{error}</p>;
   }
 
-  return <SurahList surahs={surahs} />;
+  return (
+    <>
+      <SearchSurah onSearch={handleSearch} surahs={surahs} />
+      <SurahList surahs={filtered} />
+    </>
+  );
 }
 
 export default SurahContainer;

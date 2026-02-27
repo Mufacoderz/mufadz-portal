@@ -1,5 +1,5 @@
 import type { Surah } from "../../../../types/surah";
-import ChevronRight from "../../../assets/ChevronRightIcon.svg";
+import ChevronRight from "../../../../assets/ChevronRightIcon.svg";
 
 type DetailSurahInfoProps = {
   surah: Surah;
