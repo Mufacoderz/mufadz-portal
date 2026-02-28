@@ -1,32 +1,10 @@
-import { useEffect, useState } from "react";
-import { fetchProfile } from "../../services/profileService";
+import { useUser } from '../../hooks/useUser'
 import ProfileAvatar from "../../components/public/Profile/ProfileAvatar";
 import ProfileInfo from "../../components/public/Profile/ProfileInfo";
-import ProfilePassword from "../../components/public/Profile/ProfilePassword";
 import ProfileReminders from "../../components/public/Profile/ProfileReminders";
-import HeadingPage from "../../components/public/Heading";
-
-type UserProfile = {
-    id: number;
-    name: string;
-    email: string;
-    bio: string;
-    role: string;
-    profile_image: string | null;
-    created_at: string;
-};
 
 function Profile() {
-    const [user, setUser] = useState<UserProfile | null>(null);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState<string | null>(null);
-
-    useEffect(() => {
-        fetchProfile()
-            .then((data) => setUser(data.data || data))
-            .catch((e) => setError(e.message))
-            .finally(() => setLoading(false));
-    }, []);
+    const { user, loading, refreshUser } = useUser();
 
     if (loading) {
         return (
@@ -42,44 +20,52 @@ function Profile() {
         );
     }
 
-    if (error || !user) {
+    if (!user) {
         return (
             <div className="dark:bg-gray-900 min-h-screen flex items-center justify-center">
-                <p className="text-red-400">{error || "Gagal memuat profil"}</p>
+                <p className="text-red-400">Gagal memuat profil</p>
             </div>
         );
     }
 
     return (
-        <div className="dark:bg-gray-900 min-h-screen">
-            <div className="py-10 sm:w-[80%] max-w-4xl mx-auto px-4">
-                <HeadingPage title="Profil Saya" />
+        <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+            {/* Hero Banner */}
+            <div className="relative h-44 bg-gradient-to-br from-blue-500 via-blue-600 to-indigo-700 dark:from-blue-800 dark:via-blue-900 dark:to-indigo-950 overflow-hidden">
+                <div className="absolute -top-10 -right-10 w-52 h-52 rounded-full bg-white/5" />
+                <div className="absolute -bottom-16 -left-8 w-64 h-64 rounded-full bg-white/5" />
+                <div className="absolute top-6 left-1/3 w-24 h-24 rounded-full bg-white/5" />
+                <div className="absolute inset-0 opacity-10"
+                    style={{
+                        backgroundImage: `radial-gradient(circle, white 1px, transparent 1px)`,
+                        backgroundSize: "28px 28px"
+                    }}
+                />
+                <div className="absolute bottom-5 left-0 right-0 px-6 max-w-5xl mx-auto">
+                    <p className="text-white/60 text-sm">Selamat datang kembali 👋</p>
+                    <h1 className="text-white text-2xl font-bold mt-0.5">{user.name}</h1>
+                </div>
+            </div>
 
-                <div className="mt-6 grid grid-cols-1 lg:grid-cols-3 gap-5">
-                    {/* Kolom kiri — avatar & info */}
-                    <div className="lg:col-span-1 flex flex-col gap-5">
-                        {/* Card avatar */}
-                        <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-blue-100 dark:border-gray-700 rounded-2xl p-6 shadow-sm flex justify-center">
-                            <ProfileAvatar
-                                name={user.name}
-                                profileImage={user.profile_image}
-                                role={user.role}
-                                onAvatarUpdated={(url) => setUser({ ...user, profile_image: url })}
-                            />
-                        </div>
-
-                        {/* Ganti password */}
-                        <ProfilePassword />
+            <div className="max-w-5xl mx-auto px-4 sm:px-6 mt-4 pb-12">
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
+                    <div className="lg:col-span-1 pt-2">
+                        <ProfileAvatar
+                            name={user.name}
+                            profileImage={user.profile_image}
+                            role={user.role}
+                            email={user.email}
+                            createdAt={user.created_at}
+                            onAvatarUpdated={refreshUser}
+                        />
                     </div>
-
-                    {/* Kolom kanan — info & reminder */}
-                    <div className="lg:col-span-2 flex flex-col gap-5">
+                    <div className="lg:col-span-2 flex flex-col gap-4">
                         <ProfileInfo
                             name={user.name}
                             bio={user.bio}
                             email={user.email}
                             createdAt={user.created_at}
-                            onUpdated={(name, bio) => setUser({ ...user, name, bio })}
+                            onUpdated={refreshUser}
                         />
                         <ProfileReminders />
                     </div>
