@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
+import { useUser } from "../../../hooks/useUser";
 
 interface DecodedToken {
     id: number;
@@ -12,35 +13,48 @@ interface DecodedToken {
 
 const LoginForm = () => {
     const navigate = useNavigate();
+    const { refreshUser } = useUser();
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState("");
 
     const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault();
+        setError("");
+        setLoading(true);
 
-        const res = await fetch("http://localhost:5050/api/auth/login", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ email, password }),
-        });
+        try {
+            const res = await fetch("http://localhost:5050/api/auth/login", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email, password }),
+            });
 
-        const data = await res.json();
+            const data = await res.json();
 
-        if (data.token) {
-            localStorage.setItem("token", data.token);
+            if (data.token) {
+                localStorage.setItem("token", data.token);
 
-            const decoded = jwtDecode<DecodedToken>(data.token);
+                // ✅ Tunggu context fetch selesai dulu baru navigate
+                // supaya role sudah tersedia saat AppContent render sidebar
+                await refreshUser();
 
-            alert("Login Berhasil!");
+                const decoded = jwtDecode<DecodedToken>(data.token);
 
-            if (decoded.role === "admin") {
-                navigate("/admin/dashboard");
+                if (decoded.role === "admin") {
+                    navigate("/admin/dashboard", { replace: true });
+                } else {
+                    navigate("/", { replace: true });
+                }
             } else {
-                navigate("/");
+                setError(data.message || "Login gagal");
             }
-        } else {
-            alert(data.message);
+        } catch {
+            setError("Terjadi kesalahan, coba lagi");
+        } finally {
+            setLoading(false);
         }
     };
 
@@ -52,9 +66,7 @@ const LoginForm = () => {
 
             <form className="space-y-4 sm:space-y-5" onSubmit={handleLogin}>
                 <div>
-                    <label className="block mb-2 text-sm sm:text-base font-medium">
-                        Email
-                    </label>
+                    <label className="block mb-2 text-sm sm:text-base font-medium">Email</label>
                     <input
                         type="email"
                         placeholder="email@example.com"
@@ -65,9 +77,7 @@ const LoginForm = () => {
                 </div>
 
                 <div>
-                    <label className="block mb-2 text-sm sm:text-base font-medium">
-                        Password
-                    </label>
+                    <label className="block mb-2 text-sm sm:text-base font-medium">Password</label>
                     <input
                         type="password"
                         placeholder="********"
@@ -77,13 +87,18 @@ const LoginForm = () => {
                     />
                 </div>
 
+                {error && (
+                    <p className="text-red-400 text-sm text-center">{error}</p>
+                )}
+
                 <motion.button
                     type="submit"
-                    whileHover={{ scale: 1.03 }}
-                    whileTap={{ scale: 0.97 }}
-                    className="w-full bg-gradient-to-r from-indigo-600 via-blue-500 to-sky-400 text-white font-semibold px-5 py-3 rounded-lg"
+                    disabled={loading}
+                    whileHover={{ scale: loading ? 1 : 1.03 }}
+                    whileTap={{ scale: loading ? 1 : 0.97 }}
+                    className="w-full bg-gradient-to-r from-indigo-600 via-blue-500 to-sky-400 text-white font-semibold px-5 py-3 rounded-lg disabled:opacity-70"
                 >
-                    Masuk
+                    {loading ? "Memproses..." : "Masuk"}
                 </motion.button>
             </form>
         </div>

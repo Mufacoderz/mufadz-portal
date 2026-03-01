@@ -1,6 +1,5 @@
-import React, { createContext, useEffect, useState, useCallback } from "react";
+import { createContext, useEffect, useState, useCallback } from "react";
 import { jwtDecode } from "jwt-decode";
-
 
 const BASE_URL = "http://localhost:5050";
 
@@ -18,14 +17,14 @@ interface UserContextType {
     user: UserProfile | null;
     isLoggedIn: boolean;
     loading: boolean;
-    refreshUser: () => void; // panggil ini setelah update profil/avatar
+    refreshUser: () => Promise<void>; // ✅ harus return Promise agar bisa di-await
 }
 
 const UserContext = createContext<UserContextType>({
     user: null,
     isLoggedIn: false,
     loading: true,
-    refreshUser: () => {},
+    refreshUser: async () => {},
 });
 
 export const UserProvider = ({ children }: { children: React.ReactNode }) => {
@@ -71,4 +70,6 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
     );
 };
 
+// Export context agar bisa diimport di hooks/useUser.ts
 export { UserContext };
+export type { UserContextType };
