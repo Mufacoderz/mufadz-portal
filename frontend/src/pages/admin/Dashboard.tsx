@@ -114,7 +114,7 @@ function Dashboard() {
             <div className="mb-8">
                 <div className="flex items-center justify-between flex-wrap gap-3">
                     <div>
-                        <p className="text-sm text-gray-400 dark:text-gray-500">{greeting}, 👋</p>
+                        <p className="text-sm text-gray-400 dark:text-gray-500">Assalamualaikum, {greeting}</p>
                         <h1 className="text-2xl font-bold text-gray-900 dark:text-white mt-0.5">
                             {user?.name || "Admin"}
                         </h1>

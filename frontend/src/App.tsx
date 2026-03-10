@@ -17,6 +17,7 @@ import ChatBot from "./pages/public/ChatBot";
 import Login from "./pages/public/Login";
 import Register from "./pages/public/Register";
 import AdminDashboard from "./pages/admin/Dashboard";
+import ManajemenUser from "./pages/admin/Users";
 
 function AppContent() {
     const location = useLocation();
@@ -69,6 +70,11 @@ function AppContent() {
                     <Route path="/admin/dashboard" element={
                         !isLoggedIn ? <Navigate to="/login" replace />
                         : role === "admin" ? <AdminDashboard />
+                        : <Navigate to="/" replace />
+                    } />
+                    <Route path="/admin/manajemenUser" element={
+                        !isLoggedIn ? <Navigate to="/login" replace />
+                        : role === "admin" ? <ManajemenUser />
                         : <Navigate to="/" replace />
                     } />
                 </Routes>

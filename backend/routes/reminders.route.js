@@ -3,19 +3,7 @@ import db from "../config/db.js";
 
 const router = express.Router();
 
-// ─── SQL untuk buat tabel (jalankan sekali di phpMyAdmin) ─────────────────────
-/*
-CREATE TABLE IF NOT EXISTS reminders (
-  id          INT AUTO_INCREMENT PRIMARY KEY,
-  user_id     INT NOT NULL,
-  title       VARCHAR(255) NOT NULL,
-  note        TEXT,
-  time        DATETIME,
-  is_done     TINYINT(1) DEFAULT 0,
-  created_at  TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
-);
-*/
+
 
 // GET /api/reminders
 router.get("/", async (req, res) => {
