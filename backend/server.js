@@ -12,6 +12,8 @@ import adminRoute from "./routes/admin.route.js";
 import reminderRoutes from "./routes/reminders.route.js";
 import { authMiddleware } from "./middleware/auth.middleware.js";
 
+const chatRoute = require('./routes/chat.route');
+
 const app = express();
 const PORT = 5050;
 
@@ -22,12 +24,15 @@ app.use(cors());
 app.use(express.json());
 
 
+
 // Static folder untuk foto profil
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 app.get("/", (req, res) => {
     res.send("SERVER OK");
 });
+
+app.use('/api/chat', chatRoute);
 
 app.use("/api/auth", authRoutes);
 

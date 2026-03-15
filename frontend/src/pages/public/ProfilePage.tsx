@@ -63,7 +63,7 @@ function Profile() {
                                                 ? "bg-amber-100 text-amber-700 dark:bg-amber-900/40 dark:text-amber-400"
                                                 : "bg-blue-100 text-blue-600 dark:bg-blue-900/40 dark:text-blue-400"
                                         }`}>
-                                            {user.role === "admin" ? "👑 Admin" : "🙋 User"}
+                                            {user.role === "admin" ? "Admin" : "User"}
                                         </span>
                                     </div>
                                     <p className="text-gray-400 dark:text-gray-500 text-sm mt-0.5 font-medium">{user.email}</p>
