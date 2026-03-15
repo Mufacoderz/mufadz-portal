@@ -263,7 +263,7 @@ const Chatbot: React.FC = () => {
                     <div className="max-w-2xl mx-auto">
                         <ChatInput onSend={handleSend} disabled={loading || isRateLimited} />
                         <p className="text-center text-[10px] text-gray-400 dark:text-gray-500 mt-2">
-                            Powered by Google Gemini · Respons AI dapat keliru, verifikasi info penting
+                            Powered by GROQ · Respons AI dapat keliru, verifikasi info penting
                         </p>
                     </div>
                 </div>

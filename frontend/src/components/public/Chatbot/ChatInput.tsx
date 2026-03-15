@@ -40,7 +40,7 @@ const ChatInput: React.FC<ChatInputProps> = ({ onSend, disabled }) => {
                 onChange={(e) => setValue(e.target.value)}
                 onKeyDown={handleKeyDown}
                 onInput={handleInput}
-                placeholder="Ketik pesanmu... (Enter untuk kirim, Shift+Enter baris baru)"
+                placeholder="Ketik pesanmu..."
                 disabled={disabled}
                 rows={1}
                 className="flex-1 bg-transparent text-gray-700 dark:text-gray-200 placeholder-gray-400 dark:placeholder-gray-500 text-sm resize-none outline-none max-h-32 leading-relaxed"

@@ -11,8 +11,7 @@ import profileRoutes from "./routes/profile.route.js";
 import adminRoute from "./routes/admin.route.js";
 import reminderRoutes from "./routes/reminders.route.js";
 import { authMiddleware } from "./middleware/auth.middleware.js";
-
-const chatRoute = require('./routes/chat.route');
+import chatRoute from './routes/chat.route.js';
 
 const app = express();
 const PORT = 5050;

@@ -1,14 +1,15 @@
-const express = require('express');
+import express from 'express';
+import { sendMessage, getChatHistory, getConversations, deleteConversation } from '../controllers/chat.controller.js';
+import { authMiddleware} from '../middleware/auth.middleware.js';
+
 const router = express.Router();
-const { sendMessage, getChatHistory, getConversations, deleteConversation } = require('../controllers/chat.controller');
-const { verifyToken } = require('../middleware/auth.middleware');
 
 // Semua route chat butuh login
-router.use(verifyToken);
+router.use(authMiddleware);
 
 router.post('/', sendMessage);
 router.get('/conversations', getConversations);
 router.get('/history/:conversationId', getChatHistory);
 router.delete('/conversations/:conversationId', deleteConversation);
 
-module.exports = router;
+export default router;

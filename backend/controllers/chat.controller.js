@@ -1,7 +1,7 @@
-const db = require("../config/db");
-const { GoogleGenerativeAI } = require("@google/generative-ai");
+import db from "../config/db.js";
+import Groq from "groq-sdk";
 
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
 
 const SYSTEM_PROMPT = `Kamu adalah asisten AI yang membantu dan berpengetahuan luas bernama "Mufadz Assistant".
 Kamu memahami ajaran Islam dengan baik dan bisa menjawab pertanyaan seputar Al-Quran, hadits, fiqih, doa, 
@@ -88,24 +88,25 @@ const sendMessage = async (req, res) => {
             [userId, conversationId],
         );
 
-        // Build history untuk Gemini (format: {role, parts})
-        const history = historyRows.map((row) => ({
-            role: row.role === "assistant" ? "model" : "user",
-            parts: [{ text: row.content }],
-        }));
+        // Build messages untuk Groq (format: {role, content})
+        const messages = [
+            { role: "system", content: SYSTEM_PROMPT },
+            ...historyRows.map((row) => ({
+                role: row.role === "assistant" ? "assistant" : "user",
+                content: row.content,
+            })),
+            { role: "user", content: message.trim() },
+        ];
 
-        // Init Gemini model
-        const model = genAI.getGenerativeModel({
-            model: "gemini-1.5-flash",
-            systemInstruction: SYSTEM_PROMPT,
+        // Kirim ke Groq
+        const completion = await groq.chat.completions.create({
+            model: "llama-3.1-8b-instant",
+            messages,
+            max_tokens: 1024,
         });
 
-        // Start chat dengan history
-        const chat = model.startChat({ history });
-
-        // Kirim pesan user
-        const result = await chat.sendMessage(message.trim());
-        const aiResponse = result.response.text();
+        const aiResponse =
+            completion.choices[0]?.message?.content || "Maaf, tidak ada respons.";
 
         // Simpan pesan user & AI ke DB
         await db.query(
@@ -121,7 +122,7 @@ const sendMessage = async (req, res) => {
     } catch (error) {
         console.error("sendMessage error:", error);
 
-        // Handle Gemini rate limit (429)
+        // Handle Groq rate limit (429)
         if (
             error.status === 429 ||
             (error.message && error.message.includes("429"))
@@ -157,9 +158,4 @@ const deleteConversation = async (req, res) => {
     }
 };
 
-module.exports = {
-    sendMessage,
-    getChatHistory,
-    getConversations,
-    deleteConversation,
-};
+export { sendMessage, getChatHistory, getConversations, deleteConversation };
