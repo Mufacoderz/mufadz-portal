@@ -37,6 +37,11 @@ Membangun aplikasi Islami modern dengan fitur-fitur yang relevan untuk kehidupan
 
 ---
 
+## Login & Register
+<img src="PreviewIMG/login.png" width="100%"/>
+<img src="PreviewIMG/regis.png" width="100%"/>
+---
+
 ## Home Page (Light Mode)
 <img src="PreviewIMG/home.png" width="100%"/>
 <img src="PreviewIMG/home2.png" width="100%"/>
