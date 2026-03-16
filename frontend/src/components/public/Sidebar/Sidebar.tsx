@@ -25,10 +25,8 @@ const Sidebar = () => {
     const navigate = useNavigate();
     const activePath = location.pathname;
 
-    // 🔐 cek login
     const isLoggedIn = !!localStorage.getItem("token");
 
-    // 📌 menu sidebar
     const navItems = [
         { name: "Home", path: "/", icon: <Home size={20} />, auth: false },
         {
@@ -58,7 +56,6 @@ const Sidebar = () => {
         },
     ];
 
-    // 🔒 handler klik menu yg butuh login
     const handleProtectedClick = (
         e: React.MouseEvent<HTMLAnchorElement>,
         needAuth: boolean

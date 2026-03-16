@@ -18,11 +18,12 @@ import Login from "./pages/public/Login";
 import Register from "./pages/public/Register";
 import AdminDashboard from "./pages/admin/Dashboard";
 import ManajemenUser from "./pages/admin/Users";
+import Quran from "./pages/admin/Quran";
 
 function AppContent() {
     const location = useLocation();
 
-    // ✅ Ambil dari context — otomatis update setelah login tanpa perlu decode manual
+    // Ambil dari context — otomatis update setelah login tanpa perlu decode manual
     const { user, isLoggedIn, loading } = useUser();
     const role = user?.role ?? "";
 
@@ -75,6 +76,11 @@ function AppContent() {
                     <Route path="/admin/manajemenUser" element={
                         !isLoggedIn ? <Navigate to="/login" replace />
                         : role === "admin" ? <ManajemenUser />
+                        : <Navigate to="/" replace />
+                    } />
+                    <Route path="/admin/quran" element={
+                        !isLoggedIn ? <Navigate to="/login" replace />
+                        : role === "admin" ? <Quran />
                         : <Navigate to="/" replace />
                     } />
                 </Routes>
