@@ -38,18 +38,18 @@ const getConversations = async (req, res) => {
     try {
         const [rows] = await db.query(
             `SELECT 
-         conversation_id,
-         MIN(created_at) as started_at,
-         COUNT(*) as message_count,
-         (SELECT content FROM chat_messages cm2 
-          WHERE cm2.conversation_id = cm.conversation_id 
+            conversation_id,
+            MIN(created_at) as started_at,
+            COUNT(*) as message_count,
+            (SELECT content FROM chat_messages cm2 
+            WHERE cm2.conversation_id = cm.conversation_id 
             AND cm2.user_id = ? AND cm2.role = 'user'
-          ORDER BY created_at ASC LIMIT 1) as first_message
-       FROM chat_messages cm
-       WHERE user_id = ?
-       GROUP BY conversation_id
-       ORDER BY started_at DESC
-       LIMIT 20`,
+            ORDER BY created_at ASC LIMIT 1) as first_message
+            FROM chat_messages cm
+            WHERE user_id = ?
+            GROUP BY conversation_id
+            ORDER BY started_at DESC
+            LIMIT 20`,
             [userId, userId],
         );
         res.json({ success: true, conversations: rows });
@@ -105,8 +105,11 @@ const sendMessage = async (req, res) => {
             max_tokens: 1024,
         });
 
-        const aiResponse =
-            completion.choices[0]?.message?.content || "Maaf, tidak ada respons.";
+        const aiResponse = completion.choices[0]?.message?.content || 'Maaf, tidak ada respons.';
+
+        // TEMPORARY DEBUG - hapus setelah fix
+        console.log('completion:', JSON.stringify(completion.choices[0], null, 2));
+        console.log('aiResponse:', aiResponse);
 
         // Simpan pesan user & AI ke DB
         await db.query(
