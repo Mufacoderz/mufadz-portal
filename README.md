@@ -25,9 +25,11 @@ Membangun aplikasi Islami modern dengan fitur-fitur yang relevan untuk kehidupan
 - Baca Al-Qur'an
 - Doa Harian
 - Mode Gelap & Terang
-- (Rencana) Reminder & Notifikasi
+- Sistem User / Login
+- Chatbot
+- Reminder
+- (Rencana) Notifikasi
 - (Rencana) Chat Realtime
-- (Rencana) Sistem User / Login
 - Dan fitur lainnya
 
 ---
