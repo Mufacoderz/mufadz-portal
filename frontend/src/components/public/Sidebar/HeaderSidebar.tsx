@@ -1,5 +1,5 @@
 import ProfilKosong from '../../../assets/ProfilKosong.webp'
-import Logo from '../../../assets/logo.webp'
+import Logo from '../../../assets/logo.png'
 import { Link } from 'react-router-dom'
 import { useUser } from '../../../hooks/useUser'
 
