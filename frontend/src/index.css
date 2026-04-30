@@ -2,33 +2,65 @@
 @tailwind components;
 @tailwind utilities;
 
-
 /* *{
     border: 1px solid red;
 } */
 
 
-@keyframes shine {
-    0% {
-        left: -75%;
-    }
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(100, 116, 139, 0.4) transparent;
+}
 
-    100% {
-        left: 125%;
-    }
+*::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: rgba(100, 116, 139, 0.35); /* abu soft */
+  border-radius: 999px;
+  transition: all 0.2s ease;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: rgba(100, 116, 139, 0.6);
+}
+
+*::-webkit-scrollbar-thumb:active {
+  background: rgba(59, 130, 246, 0.7); /* biru subtle */
+}
+
+
+
+.scroll-hover::-webkit-scrollbar-thumb {
+  background: transparent;
+}
+
+.scroll-hover:hover::-webkit-scrollbar-thumb {
+  background: rgba(100, 116, 139, 0.4);
+}
+
+
+
+@keyframes shine {
+  0% { left: -75%; }
+  100% { left: 125%; }
 }
 
 .animate-shine {
-    animation: shine 3s infinite;
-}
-
-h1, h2, h3, h4{
-    font-family: 'Changa';
-}
-
-p{
-    font-family: 'Noto Kufi Arabic';
+  animation: shine 3s infinite;
 }
 
 
+h1, h2, h3, h4 {
+  font-family: 'Changa';
+}
 
+p {
+  font-family: 'Noto Kufi Arabic';
+}
