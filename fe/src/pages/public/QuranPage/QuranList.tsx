@@ -1,6 +1,7 @@
 import { motion } from "framer-motion"
 import SurahContainer from "../../../components/public/Quran/Surah/SurahContainer"
 import HeadingPage from "../../../components/public/Heading"
+import SEO from "../../../components/public/SEO"
 
 const QuranList = () => {
     return (
@@ -10,6 +11,11 @@ const QuranList = () => {
             transition={{ duration: 0.4, ease: "easeOut" }}
             className="dark:bg-gray-900 min-h-screen"
         >
+            <SEO
+                title="Baca Al-Quran"
+                description="Baca Al-Quran online 114 surah lengkap dengan tafsir, audio, dan terjemahan bahasa Indonesia."
+                path="/quran"
+            />
             <div className="py-10 px-2 sm:px-4 w-full max-w-5xl mx-auto">
                 <HeadingPage title="Baca Al-Quran" subtitle="114 surah lengkap dengan tafsir dan audio" />
                 <SurahContainer />

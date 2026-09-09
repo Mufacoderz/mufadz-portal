@@ -1,14 +1,22 @@
+import { useParams } from "react-router-dom"
 import { motion } from "framer-motion"
 import DetailSurahContainer from "../../../components/public/Quran/DetailSurah/DetailSurahContainer"
 import QuranPrevButton from "../../../components/public/Quran/QuranPrevButton"
+import SEO from "../../../components/public/SEO"
 
 function DetailSurahPage() {
+    const { surahId } = useParams<{ surahId: string }>()
     return (
         <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, ease: "easeOut" }}
         >
+            <SEO
+                title={`Surah ${surahId} — Al-Quran`}
+                description={`Baca surah ${surahId} Al-Quran lengkap dengan ayat, terjemahan, dan audio.`}
+                path={`/surah/${surahId}`}
+            />
             <div className="dark:bg-gray-900">
                 <div className="py-4 sm:py-10 sm:w-[80%] mx-auto">
                     <div className="ml-6">

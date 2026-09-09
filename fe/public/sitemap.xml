@@ -7,27 +7,33 @@
     </url>
 
     <url>
-        <loc>https://mufadz-app.vercel.app/chat</loc>
-    </url>
-
-    <url>
         <loc>https://mufadz-app.vercel.app/quran</loc>
+        <priority>0.9</priority>
     </url>
 
     <url>
         <loc>https://mufadz-app.vercel.app/doa</loc>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://mufadz-app.vercel.app/zakat</loc>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://mufadz-app.vercel.app/zikir</loc>
+        <priority>0.7</priority>
     </url>
 
     <url>
         <loc>https://mufadz-app.vercel.app/panduan</loc>
+        <priority>0.6</priority>
     </url>
 
     <url>
-        <loc>https://mufadz-app.vercel.app/register</loc>
-    </url>
-
-    <url>
-        <loc>https://mufadz-app.vercel.app/login</loc>
+        <loc>https://mufadz-app.vercel.app/chatbot</loc>
+        <priority>0.6</priority>
     </url>
 
 </urlset>

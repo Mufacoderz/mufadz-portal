@@ -4,6 +4,7 @@ import axios from "axios"
 import DoaPrevButton from "../../../components/public/Doa/DoaPrevButton"
 import DoaCard from "../../../components/public/Doa/DoaCard"
 import { motion } from "framer-motion"
+import SEO from "../../../components/public/SEO"
 
 interface Doa {
     id: number
@@ -45,6 +46,11 @@ export default function DoaDetail() {
 
     return (
         <div className="min-h-screen flex justify-center items-start px-5 pt-10 pb-20 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-950 transition-colors duration-300">
+            <SEO
+                title={doa.judul}
+                description={`Baca doa ${doa.judul} lengkap dengan bacaan Arab, Latin, dan terjemahan.`}
+                path={`/doa/${doa.id}`}
+            />
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Wheat, Briefcase, PiggyBank } from "lucide-react";
 import HeadingPage from "../../../components/public/Heading";
+import SEO from "../../../components/public/SEO";
 
 type ZakatType = "fitrah" | "penghasilan" | "maal";
 
@@ -51,6 +52,11 @@ export default function ZakatPage() {
             transition={{ duration: 0.4, ease: "easeOut" }}
             className="w-full dark:bg-gray-900 min-h-screen p-4 md:p-8"
         >
+            <SEO
+                title="Kalkulator Zakat"
+                description="Hitung zakat fitrah, zakat penghasilan, dan zakat maal secara online dengan kalkulator zakat Mufadz."
+                path="/zakat"
+            />
             <div className="max-w-2xl mx-auto space-y-6">
                 <HeadingPage title="Kalkulator Zakat" subtitle="Hitung zakat fitrah, penghasilan, dan maal" />
 

@@ -4,12 +4,18 @@ import Footer from "../../../components/public/Footer"
 import PanduanHeading from "../../../components/public/Panduan/PanduanHeading"
 import PanduanList from "../../../components/public/Panduan/PanduanList"
 import PanduanSupport from "../../../components/public/Panduan/PanduanSupport"
+import SEO from "../../../components/public/SEO"
 
 export default function Panduan() {
 
 
     return (
         <>
+            <SEO
+                title="Panduan"
+                description="Panduan lengkap menggunakan Mufadz — asisten Islami digital untuk baca Al-Quran, doa, zakat, dan chatbot AI."
+                path="/panduan"
+            />
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
