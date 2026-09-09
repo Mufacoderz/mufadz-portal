@@ -1,5 +1,6 @@
 import { Suspense, lazy } from "react";
 import { BrowserRouter, useLocation, Navigate, Route, Routes } from "react-router-dom";
+import { HelmetProvider } from "react-helmet-async";
 import { useUser } from "./hooks/useUser";
 
 import Sidebar from "./components/public/Sidebar/Sidebar";
@@ -111,8 +112,10 @@ function AppContent() {
 
 export default function App() {
     return (
-        <BrowserRouter>
-            <AppContent />
-        </BrowserRouter>
+        <HelmetProvider>
+            <BrowserRouter>
+                <AppContent />
+            </BrowserRouter>
+        </HelmetProvider>
     );
 }

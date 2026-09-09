@@ -3,6 +3,7 @@ import type { AxiosError } from 'axios';
 import { v4 as uuidv4 } from 'uuid';
 import ChatMessage from '../../../components/public/Chatbot/ChatMessage';
 import ChatInput from '../../../components/public/Chatbot/ChatInput';
+import SEO from '../../../components/public/SEO';
 import {
     sendMessage as apiSendMessage,
     getChatHistory,
@@ -129,6 +130,11 @@ const Chatbot: React.FC = () => {
 
     return (
         <div className="flex h-screen bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100 overflow-hidden">
+            <SEO
+                title="Chatbot AI Islami"
+                description="Tanya jawab seputar Al-Quran, hadits, doa, dan topik Islam lainnya dengan AI Mufadz Assistant."
+                path="/chatbot"
+            />
             {/* ── SIDEBAR ── */}
             <aside
                 className={`fixed inset-y-0 left-0 z-30 w-72 bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700 flex flex-col transform transition-transform duration-300 lg:static lg:translate-x-0 ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'

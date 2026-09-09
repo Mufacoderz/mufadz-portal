@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Repeat, X, RotateCcw } from "lucide-react";
 import DoaCard from "../../../components/public/Doa/DoaCard";
 import HeadingPage from "../../../components/public/Heading";
+import SEO from "../../../components/public/SEO";
 
 interface Bacaan {
     judul: string;
@@ -112,6 +113,11 @@ export default function ZikirPage() {
             transition={{ duration: 0.4, ease: "easeOut" }}
             className="w-full dark:bg-gray-900 min-h-screen p-4 md:p-8"
         >
+            <SEO
+                title="Zikir & Dzikir"
+                description="Bacaan zikir harian lengkap dengan fitur tasbih digital. Istighfar, tahlil, Ayat Kursi, dan bacaan dzikir lainnya."
+                path="/zikir"
+            />
             <div className="max-w-2xl mx-auto space-y-6">
                 <HeadingPage title="Zikir & Dzikir" subtitle="Bacaan zikir harian dengan fitur tasbih digital" />
 
